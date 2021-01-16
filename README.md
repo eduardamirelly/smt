@@ -6,3 +6,9 @@ Informações para criar e instalar os módulos na virtualenv:
 - Criar uma máquina virtual com: virtualenv <nome>;
 - Ativar a virtualenv indo em <nome da máquina>/Scripts e depois acionar o arquivo activate (digite após estar no diretório do Scripts;
 - Após isso, retornar a pasta do projeto no CMD e instalar os outros módulos através do freeze: pip install -r requirements.txt
+
+SuperUser criado
+
+user: admin
+email: admin@admin.com
+password: admin
