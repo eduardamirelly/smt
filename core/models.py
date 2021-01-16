@@ -3,7 +3,7 @@ from django.db import models
 # Create your models here.
 
 class Aluno(models.Model):
-    name = models.CharField("Nome do Aluno", max_length=100)
+    nome = models.CharField("Nome do Aluno", max_length=100)
     matricula = models.CharField("Matrícula", max_length=14)
     
     CAICO = 'CA'
@@ -17,21 +17,21 @@ class Aluno(models.Model):
     desc_curso = models.TextField("Descrição do Curso")
     email_acade = models.EmailField("E-mail Acadêmico")
 
-    FEMININO = 'F'
-    MASCULINO = 'M'
+    FEMININO = 'Feminino'
+    MASCULINO = 'Masculino'
     SEXO_CHOICES = [
         (FEMININO, 'F'),
         (MASCULINO, 'M'),
     ]
-    sexo = models.CharField(max_length=1, choices=SEXO_CHOICES)
+    sexo = models.CharField(max_length=10, choices=SEXO_CHOICES)
 
-    MATRICULADO = 'MATRICULADO'
-    DESATIVADO = 'DESATIVADO'
+    MATRICULADO = 'M'
+    DESATIVADO = 'D'
     STATUS_CURSO_CHOICES = [
         (MATRICULADO, 'Matriculado'),
         (DESATIVADO, 'Desativado'),
     ]
-    status_curso = models.CharField(max_length=20, choices=STATUS_CURSO_CHOICES, default=MATRICULADO)
+    status_curso = models.CharField(max_length=1, choices=STATUS_CURSO_CHOICES, default=MATRICULADO)
 
     phone = models.CharField("Telefone", max_length=12)
     turma = models.CharField("Turma", max_length=20)
@@ -45,4 +45,7 @@ class Aluno(models.Model):
         (NOTURNO, 'Noturno'),
     ]
     turno = models.CharField(max_length=1, choices=TURNO_CHOICES)
+
+    def __str__(self):
+        return self.nome
 
