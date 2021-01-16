@@ -9,7 +9,7 @@ class Aluno(models.Model):
     CAICO = 'CA'
     CAMPUS_CHOICES = [
         #deixar apenas um por enquanto
-        (CAICO, 'CAICO')
+        (CAICO, 'CA')
     ]
     campus = models.CharField(max_length=2, choices=CAMPUS_CHOICES, default=CAICO)
 
@@ -20,10 +20,10 @@ class Aluno(models.Model):
     FEMININO = 'F'
     MASCULINO = 'M'
     SEXO_CHOICES = [
-        (FEMININO, 'Feminino'),
-        (MASCULINO, 'Masculino'),
+        (FEMININO, 'F'),
+        (MASCULINO, 'M'),
     ]
-    sexo = models.CharField(max_length=1, choices=SEXO_CHOICES, default="-")
+    sexo = models.CharField(max_length=1, choices=SEXO_CHOICES)
 
     MATRICULADO = 'MATRICULADO'
     DESATIVADO = 'DESATIVADO'
@@ -44,5 +44,5 @@ class Aluno(models.Model):
         (VESPERTINO, 'Vespertino'),
         (NOTURNO, 'Noturno'),
     ]
-    turno = models.CharField(max_length=1, choices=TURNO_CHOICES, default="-")
+    turno = models.CharField(max_length=1, choices=TURNO_CHOICES)
 
