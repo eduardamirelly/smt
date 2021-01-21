@@ -1,17 +1,26 @@
-from django.shortcuts import render
+from django.shortcuts import render, redirect
 import pandas as pd
+from .forms import UploadFileExcelForm
 from .models import Aluno
+from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
 def listAlunos(request):
     #data = excel_read('core/dataframes/alunos-ifrn-caico.xls')
     #save_data(data)
-    
     return render(request, 'listAlunos.html')
 
+def uploadFile(request):
+    if request.method == 'POST':
+        uploadFile = request.FILES['file-excel']
+        fs = FileSystemStorage()
+        fs.save(uploadFile.name, uploadFile)
+        save_data(excel_read(uploadFile.name))
+    return render(request, 'importAlunos.html')
+
 def excel_read(filename: str):
-    table_alunos = pd.read_excel(filename)
+    table_alunos = pd.read_excel(f'core/media/{filename}')
     table_alunos = table_alunos.rename(columns={'Matrícula': 'Matricula', 'Código Curso': 'codeCurso', 'Descrição do Curso': 'descCurso', 'Email Acadêmico': 'emailAcad', 'Situação no Curso': 'statusCurso'})
     
     return table_alunos
@@ -75,7 +84,7 @@ def save_data(data):
 
         aux.append(obj)
 
-    Aluno.objects.bulk_create(aux)
+    #Aluno.objects.bulk_create(aux)
 
 
 
