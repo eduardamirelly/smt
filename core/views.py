@@ -1,25 +1,31 @@
 from django.shortcuts import render, redirect
 import pandas as pd
 from .forms import UploadFileExcelForm
-from .models import Aluno
+from .models import Aluno, TelefonesAlunos
 from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
 def listAlunos(request):
-    #data = excel_read('core/dataframes/alunos-ifrn-caico.xls')
-    #save_data(data)
     return render(request, 'listAlunos.html')
 
 def uploadFile(request):
     if request.method == 'POST':
         uploadFile = request.FILES['file-excel']
         fs = FileSystemStorage()
-        fs.save(uploadFile.name, uploadFile)
-        save_data(excel_read(uploadFile.name))
+        print('não')
+        #Verifica se o arquivo existe na pasta MEDIA
+        if not fs.exists(uploadFile.name):
+            print('sim')
+            fs.save(uploadFile.name, uploadFile) #Salva o arquivo na pasta media
+            save_data(excel_read(uploadFile.name)) #tratamento do arquivo media
+            return redirect('list-alunos')
+
     return render(request, 'importAlunos.html')
 
 def excel_read(filename: str):
+    #leitura do arquivo excel com o pandas
+    #ajustando nome das colunas da tabela
     table_alunos = pd.read_excel(f'core/media/{filename}')
     table_alunos = table_alunos.rename(columns={'Matrícula': 'Matricula', 'Código Curso': 'codeCurso', 'Descrição do Curso': 'descCurso', 'Email Acadêmico': 'emailAcad', 'Situação no Curso': 'statusCurso'})
     
@@ -51,9 +57,8 @@ def save_data(data):
         list_turno.append(data['Turno'].loc[x])
         list_sexo.append(data['Sexo'].loc[x])
 
-
-    aux = []
-
+    alunos_aux = []
+    telefones_alunos_aux = []
 
     for i in range(len(data)):
         nome = list_nomes[i]
@@ -63,29 +68,44 @@ def save_data(data):
         descCurso = list_descCurso[i]
         emailAcad = list_emailAcad[i]
         statusCurso = list_statusCurso[i]
-        telefone = list_telefone[i]
         turma = list_turma[i]
         turno = list_turno[i]
         sexo = list_sexo[i]
 
         obj = Aluno(
-            nome = nome,
-            matricula = matricula,
-            campus = campus,
-            code_curso = codeCurso,
-            desc_curso = descCurso,
-            email_acade = emailAcad,
-            sexo = sexo,
-            status_curso = statusCurso,
-            phone = telefone,
-            turma = turma,
-            turno = turno,
+            nome=nome, 
+            matricula=matricula, 
+            campus=campus, 
+            code_curso=codeCurso, 
+            desc_curso=descCurso, 
+            email_acade=emailAcad, 
+            sexo=sexo, 
+            status_curso=statusCurso, 
+            turma=turma, 
+            turno=turno
         )
 
-        aux.append(obj)
+        alunos_aux.append(obj)
 
-    #Aluno.objects.bulk_create(aux)
+    Aluno.objects.bulk_create(alunos_aux)
 
+    for i in range(len(data)):
+        list_telefones = list_telefone[i]
+        list_telefones = list_telefones.split(', ')
 
+        obj_aluno = Aluno.objects.get(matricula=list_matriculas[i])
+        print(obj_aluno.pk)
 
+        for tel in list_telefones:
+            telefones = TelefonesAlunos(
+                aluno=obj_aluno,
+                phone=tel
+            )
+
+            telefones_alunos_aux.append(telefones)
+    
+    TelefonesAlunos.objects.bulk_create(telefones_alunos_aux)
+    
+
+    
 

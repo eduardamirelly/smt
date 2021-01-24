@@ -17,13 +17,13 @@ class Aluno(models.Model):
     desc_curso = models.TextField("Descrição do Curso")
     email_acade = models.EmailField("E-mail Acadêmico")
 
-    FEMININO = 'Feminino'
-    MASCULINO = 'Masculino'
+    FEMININO = 'F'
+    MASCULINO = 'M'
     SEXO_CHOICES = [
-        (FEMININO, 'F'),
-        (MASCULINO, 'M'),
+        (FEMININO, 'Feminino'),
+        (MASCULINO, 'Masculino'),
     ]
-    sexo = models.CharField(max_length=10, choices=SEXO_CHOICES)
+    sexo = models.CharField(max_length=1, choices=SEXO_CHOICES)
 
     MATRICULADO = 'M'
     DESATIVADO = 'D'
@@ -33,19 +33,25 @@ class Aluno(models.Model):
     ]
     status_curso = models.CharField(max_length=1, choices=STATUS_CURSO_CHOICES, default=MATRICULADO)
 
-    phone = models.CharField("Telefone", max_length=12)
     turma = models.CharField("Turma", max_length=20)
 
-    MATUTINO = 'M'
-    VESPERTINO = 'V'
-    NOTURNO = 'N'
+    MATUTINO = 'Matutino'
+    VESPERTINO = 'Vespertino'
+    NOTURNO = 'Noturno'
     TURNO_CHOICES = [
         (MATUTINO, 'Matutino'),
         (VESPERTINO, 'Vespertino'),
         (NOTURNO, 'Noturno'),
     ]
-    turno = models.CharField(max_length=1, choices=TURNO_CHOICES)
+    turno = models.CharField(max_length=10, choices=TURNO_CHOICES)
 
     def __str__(self):
         return self.nome
 
+
+class TelefonesAlunos(models.Model):
+    aluno = models.ForeignKey(Aluno, on_delete=models.RESTRICT)
+    phone = models.CharField("Telefone", max_length=12)
+
+    def __str__(self):
+        return self.phone

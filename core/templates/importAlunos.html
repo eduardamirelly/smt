@@ -15,18 +15,18 @@
     <section>
         <form method="POST" enctype="multipart/form-data">
             {% csrf_token %}
-            <!-- <div class="file-field input-field"> -->
-              <!-- <div class="btn"> -->
-                <!-- <span>File</span> -->
-                <input type="file" name="file-excel">
-              <!-- </div> -->
-              <!-- <div class="file-path-wrapper"> -->
-                <!-- <input class="file-path validate" type="text"> -->
-              <!-- </div> -->
-            <!-- </div> -->
-            <!-- <div> -->
+            <div class="file-field input-field">
+              <div class="btn">
+                <span>File</span>
+                <input type="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file-excel">
+              </div>
+              <div class="file-path-wrapper">
+                <input class="file-path validate" type="text">
+              </div>
+            </div>
+            <div>
                 <button type="submit">Upload</button>
-            <!-- </div> -->
+            </div>
         </form>
     </section>
 
