@@ -5,11 +5,3 @@ from .models import Aluno, TelefonesAlunos
 
 admin.site.register(Aluno)
 admin.site.register(TelefonesAlunos)
-
-class TelefonesInline(admin.StackedInline):
-    model = TelefonesAlunos
-
-class AlunoAdmin(admin.ModelAdmin):
-    inlines = [
-        TelefonesInline,
-    ]
