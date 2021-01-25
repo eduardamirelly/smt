@@ -9,16 +9,48 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 </head>
 <body>
 
     <section>
-        <div>
-            <table>
+        <div class="container">
+            <table class="centered">
                 <thead>
+                    <th>id</th>
+                    <th>Matricula</th>
+                    <th>Nome</th>
+                    <th>Campus</th>
+                    <th>CodeCurso</th>
+                    <th>DescCurso</th>
+                    <th>EmailAcad</th>
+                    <th>Sexo</th>
+                    <th>Status</th>
+                    <th>Telefones</th>
+                    <th>Turma</th>
+                    <th>Turno</th>
                 </thead>
                 <tbody>
-                
+                    {% for al in alunos %}
+                    <tr>
+                        <td>{{ al.pk }}</td>
+                        <td>{{ al.matricula }}</td>
+                        <td>{{ al.nome }}</td>
+                        <td>{{ al.campus }}</td>
+                        <td>{{ al.code_curso }}</td>
+                        <td>{{ al.desc_curso }}</td>
+                        <td>{{ al.email_acade }}</td>
+                        <td>{{ al.sexo }}</td>
+                        <td>{{ al.status_curso }}</td>
+                        {% for tel in telefones %}
+                            {% if al.pk == tel.aluno.pk %}
+                            <td>{{ tel }}</td>
+                            {% endif %}
+                        {% endfor %}
+                        <td>{{ al.turma }}</td>
+                        <td>{{ al.turno }}</td>
+                    </tr>
+                    {% endfor %}
                 </tbody>
             </table>
         </div>
