@@ -13,7 +13,7 @@ def listAlunos(request):
     return render(request, 'listAlunos.html', {'alunos': alunos, 'telefones': telefones})
 
 def uploadFile(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and len(request.FILES) != 0:
         uploadFile = request.FILES['file-excel']
         fs = FileSystemStorage()
         #Verifica se o arquivo existe na pasta MEDIA

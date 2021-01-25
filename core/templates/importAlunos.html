@@ -9,25 +9,32 @@
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
     <section>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="file-field input-field">
-              <div class="btn">
-                <span>File</span>
-                <input type="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file-excel">
+        <div class="container center">
+            <h1>File Upload - Excel</h1>
+        </div>
+
+        <div class="container center">
+          <form method="POST" enctype="multipart/form-data">
+              {% csrf_token %}
+              <div class="file-field input-field">
+                  <div class="btn">
+                    <span>File</span>
+                    <input type="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file-excel">
+                  </div>
+                  <div class="file-path-wrapper">
+                    <input class="file-path validate" type="text">
+                  </div>
               </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
+              <div>
+                  <button class="btn btn-large #004d40 teal darken-4" type="submit">Upload</button>
               </div>
-            </div>
-            <div>
-                <button type="submit">Upload</button>
-            </div>
-        </form>
+          </form>
+        </div>
     </section>
 
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
