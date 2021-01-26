@@ -10,45 +10,61 @@
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
     <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
 
     <section>
         <div class="container">
+            <div class="center title-h2">
+                <h2>Lista de Alunos - IFRN</h2>
+            </div>
+            <div class="row search">
+                <form>
+                    {% csrf_token %}
+                    <div class="container center row">
+                        <input class="col s9" type="search" placeholder="Buscar...">
+                        <button class="center btn col s2" type="submit"><i class="material-icons">search</i></button>
+                    </div>
+                    <div class="input-field">
+                        <select>
+                            <option value="" disabled selected>Filtrar por:</option>
+                            <option value="1">Campus</option>
+                            <option value="2">Código Curso</option>
+                            <option value="3">Sexo</option>
+                            <option value="4">Situação</option>
+                            <option value="5">Turno</option>
+                        </select>
+                    </div>
+                </form>
+            </div>
+        </div>
+        <div class="container">
             <table class="centered">
                 <thead>
-                    <th>id</th>
-                    <th>Matricula</th>
+                    <th>Matrícula</th>
                     <th>Nome</th>
-                    <th>Campus</th>
-                    <th>CodeCurso</th>
-                    <th>DescCurso</th>
-                    <th>EmailAcad</th>
-                    <th>Sexo</th>
-                    <th>Status</th>
+                    <th>E-mail Acadêmico</th>
                     <th>Telefones</th>
-                    <th>Turma</th>
-                    <th>Turno</th>
+                    <th>Código do Curso</th>
                 </thead>
                 <tbody>
                     {% for al in alunos %}
                     <tr>
-                        <td>{{ al.pk }}</td>
                         <td>{{ al.matricula }}</td>
                         <td>{{ al.nome }}</td>
-                        <td>{{ al.campus }}</td>
-                        <td>{{ al.code_curso }}</td>
-                        <td>{{ al.desc_curso }}</td>
                         <td>{{ al.email_acade }}</td>
-                        <td>{{ al.sexo }}</td>
-                        <td>{{ al.status_curso }}</td>
-                        {% for tel in telefones %}
-                            {% if al.pk == tel.aluno.pk %}
-                            <td>{{ tel }}</td>
-                            {% endif %}
-                        {% endfor %}
-                        <td>{{ al.turma }}</td>
-                        <td>{{ al.turno }}</td>
+                        <td>
+                            <select>
+                                {% for tel in telefones %}
+                                {% if al.pk == tel.aluno.pk %}
+                                <option value="{{ tel }}">{{ tel }}</option>
+                                {% endif %}
+                                {% endfor %}
+                            </select>
+                        </td>
+                        <td>{{ al.code_curso }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>
@@ -57,6 +73,12 @@
     </section>
 
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+    <script>
+        $(document).ready(function(){
+            $('select').formSelect();
+        });
+    </script>
 
 </body>
 </html>
