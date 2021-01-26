@@ -5,29 +5,43 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Lista de Alunos | IFRN</title>
+    <title>Importação de Planilhas</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
 </head>
 <body>
 
     <section>
-        <form method="POST" enctype="multipart/form-data">
-            {% csrf_token %}
-            <div class="file-field input-field">
-              <div class="btn">
-                <span>File</span>
-                <input type="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file-excel">
-              </div>
-              <div class="file-path-wrapper">
-                <input class="file-path validate" type="text">
-              </div>
+        <div class="container">
+            <div class="center title-h2">
+                <h2>Importação de <span> Planilhas - Excel </span></h1>
             </div>
             <div>
-                <button type="submit">Upload</button>
+                <form method="POST" enctype="multipart/form-data">
+                    {% csrf_token %}
+                    <div class="form-file">
+                        <div class="file-field input-field">
+                            <div class="btn btn-large btn-file">
+                                <span>File</span>
+                                <input type="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file-excel">
+                            </div>
+                            <div class="file-path-wrapper">
+                                <input class="file-path validate" type="text">
+                            </div>
+                        </div>
+                    </div>
+                    <div class="div-p">
+                        <p>* Importação de arquivos Excel com dados de Alunos.</p>
+                        <p>* Apenas usuários autorizados podem fazer upload de planilhas.</p>
+                    </div>
+                    <div class="div-submit-btn center">
+                        <button class="btn btn-upload" type="submit">Upload</button>
+                    </div>
+                </form>
             </div>
-        </form>
+        </div>
     </section>
 
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>

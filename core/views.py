@@ -7,16 +7,17 @@ from django.core.files.storage import FileSystemStorage
 # Create your views here.
 
 def listAlunos(request):
-    return render(request, 'listAlunos.html')
+    alunos = Aluno.objects.all()
+    telefones = TelefonesAlunos.objects.all()
+
+    return render(request, 'listAlunos.html', {'alunos': alunos, 'telefones': telefones})
 
 def uploadFile(request):
-    if request.method == 'POST':
+    if request.method == 'POST' and len(request.FILES) != 0:
         uploadFile = request.FILES['file-excel']
         fs = FileSystemStorage()
-        print('não')
         #Verifica se o arquivo existe na pasta MEDIA
         if not fs.exists(uploadFile.name):
-            print('sim')
             fs.save(uploadFile.name, uploadFile) #Salva o arquivo na pasta media
             save_data(excel_read(uploadFile.name)) #tratamento do arquivo media
             return redirect('list-alunos')
@@ -106,6 +107,3 @@ def save_data(data):
     
     TelefonesAlunos.objects.bulk_create(telefones_alunos_aux)
     
-
-    
-
