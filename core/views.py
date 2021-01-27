@@ -1,14 +1,14 @@
 from django.shortcuts import render, redirect
 import pandas as pd
 from .forms import UploadFileExcelForm
-from .models import Aluno, TelefonesAlunos
+from .models import Aluno, TelefonesDosAlunos
 from django.core.files.storage import FileSystemStorage
 
 # Create your views here.
 
 def listAlunos(request):
     alunos = Aluno.objects.all()
-    telefones = TelefonesAlunos.objects.all()
+    telefones = TelefonesDosAlunos.objects.all()
 
     return render(request, 'listAlunos.html', {'alunos': alunos, 'telefones': telefones})
 
@@ -98,12 +98,12 @@ def save_data(data):
         print(obj_aluno.pk)
 
         for tel in list_telefones:
-            telefones = TelefonesAlunos(
+            telefones = TelefonesDosAlunos(
                 aluno=obj_aluno,
                 phone=tel
             )
 
             telefones_alunos_aux.append(telefones)
     
-    TelefonesAlunos.objects.bulk_create(telefones_alunos_aux)
+    TelefonesDosAlunos.objects.bulk_create(telefones_alunos_aux)
     
