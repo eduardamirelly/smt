@@ -5,8 +5,8 @@ from django.conf import settings
 from django.conf.urls.static import static
 
 urlpatterns = [
-    path('import/excel/', views.uploadFile, name='upload-file'),
-    path('', views.listAlunos, name='list-alunos'),
+    path('import/excel/', views.importarArquivo, name='upload-file'),
+    path('', views.listarAlunos, name='listar-alunos'),
 ]
 
 
