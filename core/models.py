@@ -48,3 +48,20 @@ class TelefonesDosAlunos(models.Model):
 
     def __str__(self):
         return self.phone
+
+class Anamnese(models.Model):
+    febre = models.BooleanField("Febre")
+    cansaco = models.BooleanField("Cansaço")
+    tosse_seca = models.BooleanField("Tosse seca")
+    dor_corporal = models.BooleanField("Dores no corpo")
+    congestao_nasal = models.BooleanField("Congestão nasal")
+    dor_de_cabeca = models.BooleanField("Dor de cabeça")
+    conjuntivite = models.BooleanField("Conjuntivite")
+    dor_de_gargante = models.BooleanField("Dor de garganta")
+    diarreia = models.BooleanField("Diarréia")
+    perdeu_palador_ou_olfato = models.BooleanField("Perda do olfato ou paladar")
+    erupcao_cutanea_ou_descoloracao = models.BooleanField("Erupção cutânea ou descoloração da pele")
+
+    #aluno = Aluno()
+    data_e_hora = models.DateTimeField(auto_now_add=True)
+    autorizacao_presenca = models.BooleanField()
