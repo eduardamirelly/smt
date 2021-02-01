@@ -23,12 +23,10 @@ def importFile(request):
         if form.is_valid():
             file = request.FILES['file']
             fs = FileSystemStorage()
+            fs.save(file.name, file)
+            save_data(excel_read(file.name))
 
-            if not fs.exists(file.name):
-                fs.save(file.name, file)
-                save_data(excel_read(file.name))
-
-                return redirect('list-students')
+            return redirect('list-students')
 
     else:
         form = DataExcelForm()

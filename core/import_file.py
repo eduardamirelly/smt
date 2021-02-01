@@ -25,23 +25,24 @@ def save_data(data):
             class_school=data['Turma'].loc[x], 
             shift=data['Turno'].loc[x]
         )
-
-        students_aux.append(obj)
+        
+        if not Student.objects.filter(matriculation=obj.matriculation).exists():
+            students_aux.append(obj)
 
     Student.objects.bulk_create(students_aux)
 
     for x in range(len(data)):
-        list_phones_student = data['Telefone'].loc[x].split(', ')
-        obj_student = Student.objects.get(matriculation=data['Matricula'].loc[[x]][x])
+        if Student.objects.filter(matriculation=data['Matricula'].loc[[x]][x]).exists():
+            list_phones_student = data['Telefone'].loc[x].split(', ')
+            obj_student = Student.objects.get(matriculation=data['Matricula'].loc[[x]][x])
 
-        for ph in list_phones_student:
-            phones = PhonesStudent(
-                student=obj_student,
-                phone=ph
-            )
+            for ph in list_phones_student:
+                phones = PhonesStudent(
+                    student=obj_student,
+                    phone=ph
+                )
 
-            phones_student_aux.append(phones)
+                if not PhonesStudent.objects.filter(phone=ph, student=obj_student.pk).exists():
+                    phones_student_aux.append(phones)
 
-    
     PhonesStudent.objects.bulk_create(phones_student_aux)
-    
