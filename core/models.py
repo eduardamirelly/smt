@@ -4,7 +4,7 @@ from django.db import models
 
 class Student(models.Model):
     name = models.CharField('Nome do Aluno', max_length=100)
-    matriculation = models.CharField('Matrícula', max_length=14)
+    matriculation = models.CharField('Matrícula', max_length=14, unique=True)
     
     CAMPUS_CHOICES = [
         ('CA', 'CA')
