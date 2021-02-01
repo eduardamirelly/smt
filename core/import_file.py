@@ -1,86 +1,82 @@
 import pandas as pd
-from .models import Aluno, TelefonesDosAlunos
+from .models import Student, PhonesStudent
 
-class ImportarAlunos:
+def excel_read(filename: str):
+    table_students = pd.read_excel(f'core/media/{filename}')
+    table_students = table_students.rename(columns={'Matrícula': 'Matricula', 'Código Curso': 'codeCurso', 'Descrição do Curso': 'descCurso', 'Email Acadêmico': 'emailAcad', 'Situação no Curso': 'statusCurso'})
     
-    def excel_read(filename: str):
-        table_alunos = pd.read_excel(f'core/media/{filename}')
-        table_alunos = table_alunos.rename(columns={'Matrícula': 'Matricula', 'Código Curso': 'codeCurso', 'Descrição do Curso': 'descCurso', 'Email Acadêmico': 'emailAcad', 'Situação no Curso': 'statusCurso'})
-        
-        return table_alunos
+    return table_students
 
-    def save_data(data):
-        list_nomes = []
-        list_matriculas = []
-        list_campus = []
-        list_codeCurso = []
-        list_descCurso = []
-        list_emailAcad = []
-        list_statusCurso = []
-        list_telefone = []
-        list_turma = []
-        list_turno = []
-        list_sexo = []
+def save_data(data):
+    list_names = []
+    list_matriculation = []
+    list_campus = []
+    list_codeCourse = []
+    list_descCourse = []
+    list_emailAcad = []
+    list_statusCourse = []
+    list_phones = []
+    list_classSchool = []
+    list_shift = []
+    list_gender = []
 
-        for x in range(len(data)):
-            list_nomes.append(data['Nome'].loc[[x]][x])
-            list_matriculas.append(data['Matricula'].loc[[x]][x])
-            list_campus.append(data['Campus'].loc[x])
-            list_codeCurso.append(data['codeCurso'].loc[x])
-            list_descCurso.append(data['descCurso'].loc[x])
-            list_emailAcad.append(data['emailAcad'].loc[x])
-            list_statusCurso.append(data['statusCurso'].loc[x])
-            list_telefone.append(data['Telefone'].loc[x])
-            list_turma.append(data['Turma'].loc[x])
-            list_turno.append(data['Turno'].loc[x])
-            list_sexo.append(data['Sexo'].loc[x])
+    for x in range(len(data)):
+        list_names.append(data['Nome'].loc[[x]][x])
+        list_matriculation.append(data['Matricula'].loc[[x]][x])
+        list_campus.append(data['Campus'].loc[x])
+        list_codeCourse.append(data['codeCurso'].loc[x])
+        list_descCourse.append(data['descCurso'].loc[x])
+        list_emailAcad.append(data['emailAcad'].loc[x])
+        list_statusCourse.append(data['statusCurso'].loc[x])
+        list_phones.append(data['Telefone'].loc[x])
+        list_classSchool.append(data['Turma'].loc[x])
+        list_shift.append(data['Turno'].loc[x])
+        list_gender.append(data['Sexo'].loc[x])
 
-        alunos_aux = []
-        telefones_alunos_aux = []
+    students_aux = []
+    phones_student_aux = []
 
-        for i in range(len(data)):
-            nome = list_nomes[i]
-            matricula = list_matriculas[i]
-            campus = list_campus[i]
-            codeCurso = list_codeCurso[i]
-            descCurso = list_descCurso[i]
-            emailAcad = list_emailAcad[i]
-            statusCurso = list_statusCurso[i]
-            turma = list_turma[i]
-            turno = list_turno[i]
-            sexo = list_sexo[i]
+    for i in range(len(data)):
+        name = list_names[i]
+        matriculation = list_matriculation[i]
+        campus = list_campus[i]
+        codeCourse = list_codeCourse[i]
+        descCourse = list_descCourse[i]
+        emailAcad = list_emailAcad[i]
+        statusCourse = list_statusCourse[i]
+        class_school = list_classSchool[i]
+        shift = list_shift[i]
+        gender = list_gender[i]
 
-            obj = Aluno(
-                nome=nome, 
-                matricula=matricula, 
-                campus=campus, 
-                code_curso=codeCurso, 
-                desc_curso=descCurso, 
-                email_acade=emailAcad, 
-                sexo=sexo, 
-                status_curso=statusCurso, 
-                turma=turma, 
-                turno=turno
+        obj = Student(
+            name=name, 
+            matriculation=matriculation, 
+            campus=campus, 
+            code_course=codeCourse, 
+            desc_course=descCourse, 
+            email_acad=emailAcad, 
+            gender=gender, 
+            status_course=statusCourse, 
+            class_school=class_school, 
+            shift=shift
+        )
+
+        students_aux.append(obj)
+    print(students_aux)
+
+    Student.objects.bulk_create(students_aux)
+
+    for i in range(len(data)):
+        list_phones_student = list_phones[i].split(', ')
+        obj_student = Student.objects.get(matriculation=list_matriculation[i])
+
+        for ph in list_phones_student:
+            phones = PhonesStudent(
+                student=obj_student,
+                phone=ph
             )
 
-            alunos_aux.append(obj)
-
-        Aluno.objects.bulk_create(alunos_aux)
-
-        for i in range(len(data)):
-            list_telefones = list_telefone[i]
-            list_telefones = list_telefones.split(', ')
-
-            obj_aluno = Aluno.objects.get(matricula=list_matriculas[i])
-            print(obj_aluno.pk)
-
-            for tel in list_telefones:
-                telefones = TelefonesDosAlunos(
-                    aluno=obj_aluno,
-                    phone=tel
-                )
-
-                telefones_alunos_aux.append(telefones)
-        
-        TelefonesDosAlunos.objects.bulk_create(telefones_alunos_aux)
-        
+            phones_student_aux.append(phones)
+    
+    PhonesStudent.objects.bulk_create(phones_student_aux)
+    
