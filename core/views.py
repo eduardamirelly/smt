@@ -7,7 +7,7 @@ import pandas as pd
 
 # Create your views here.
 
-def listarAlunos(request):
+def listStudents(request):
     students = Student.objects.all()
     phones_students = PhonesStudent.objects.all()
 
@@ -16,7 +16,7 @@ def listarAlunos(request):
     else:
         return render(request, 'listStudents.html', {'students': students, 'phones_students': phones_students})
 
-def importarArquivo(request):
+def importFile(request):
     if request.method == 'POST' and len(request.FILES) != 0:
         form = DataExcelForm(request.FILES)
         
