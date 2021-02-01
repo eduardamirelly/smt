@@ -50,21 +50,21 @@
                     <th>Código do Curso</th>
                 </thead>
                 <tbody>
-                    {% for al in alunos %}
+                    {% for student in students %}
                     <tr>
-                        <td>{{ al.matricula }}</td>
-                        <td>{{ al.nome }}</td>
-                        <td>{{ al.email_acade }}</td>
+                        <td>{{ student.matriculation }}</td>
+                        <td>{{ student.name }}</td>
+                        <td>{{ student.email_acad }}</td>
                         <td>
                             <select>
-                                {% for tel in telefones %}
-                                {% if al.pk == tel.aluno.pk %}
-                                <option value="{{ tel }}">{{ tel }}</option>
-                                {% endif %}
+                                {% for phone in phones_students %}
+                                    {% if student.pk == phone.student.pk %}
+                                    <option value="{{ phone }}">{{ phone }}</option>
+                                    {% endif %}
                                 {% endfor %}
                             </select>
                         </td>
-                        <td>{{ al.code_curso }}</td>
+                        <td>{{ student.code_course }}</td>
                     </tr>
                     {% endfor %}
                 </tbody>

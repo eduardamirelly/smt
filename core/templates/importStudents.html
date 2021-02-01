@@ -25,10 +25,10 @@
                         <div class="file-field input-field">
                             <div class="btn btn-large btn-file">
                                 <span>File</span>
-                                <input type="file" accept="application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet" name="file-excel">
+                                {{ form.file }}
                             </div>
                             <div class="file-path-wrapper">
-                                <input class="file-path validate" type="text">
+                                <input class="file-path validate" type="text" name="file-nome">
                             </div>
                         </div>
                     </div>
@@ -36,6 +36,7 @@
                         <p>* Importação de arquivos Excel com dados de Alunos.</p>
                         <p>* Apenas usuários autorizados podem fazer upload de planilhas.</p>
                     </div>
+                    {{ form.errors }}
                     <div class="div-submit-btn center">
                         <button class="btn btn-upload" type="submit">Upload</button>
                     </div>
