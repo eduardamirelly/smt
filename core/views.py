@@ -24,7 +24,7 @@ def importFile(request):
             file = request.FILES['file']
             fs = FileSystemStorage()
             fs.save(file.name, file)
-            save_data(excel_read(file.name))
+            save_data(excel_read(file.name), file.name)
 
             return redirect('list-students')
 

@@ -1,5 +1,6 @@
 import pandas as pd
 from .models import Student, PhonesStudent
+from django.core.files.storage import default_storage
 
 def excel_read(filename: str):
     table_students = pd.read_excel(f'core/media/{filename}')
@@ -7,7 +8,7 @@ def excel_read(filename: str):
     
     return table_students
 
-def save_data(data):
+def save_data(data, filename: str):
     students_aux = []
     phones_student_aux = []
 
@@ -46,3 +47,6 @@ def save_data(data):
                     phones_student_aux.append(phones)
 
     PhonesStudent.objects.bulk_create(phones_student_aux)
+
+    if default_storage.exists(filename):
+        default_storage.delete(filename)
