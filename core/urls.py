@@ -7,6 +7,9 @@ from django.conf.urls.static import static
 urlpatterns = [
     path('import/excel/', views.importFile, name='upload-file'),
     path('', views.listStudents, name='list-students'),
+    path('anamnese/listar/', views.listAnamneses, name='list-anamneses'),
+    path('anamnese/cadastrar/', views.registerAnamnese, name='register-anamnese'),
+    path('anamnese/excluir<int:pk>/', views.deleteAnamnese, name='delete-anamnese')
 ]
 
 

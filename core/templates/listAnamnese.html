@@ -1,0 +1,43 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title> Listar Anamneses </title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+    <table>
+        <thead>
+            <tr>
+                <th> ID Anamnese </th>
+                <!-- <th> Aluno </th> -->
+                <th> Autorização de presença </th>
+                <th> Data e hora </th>
+                <th> Ações </th>
+            </tr>
+        </thead>
+        <tbody>
+            {% for form in anamneses %}
+                <tr>
+                    <td>{{ form.id }}</td>
+                    <!-- <td>{{ form.aluno }}</td> -->
+                    <td>{{ form.attendance_authorization }}</td>
+                    <td>{{ form.datetime }}</td>
+                    <td> <a href="{% url 'delete-anamnese' pk=form.id %}"> 
+                        <i class="material-icons"> delete </i> </a> </td>
+                </tr>
+            {% endfor %}
+        </tbody>
+    </table>
+
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+</body>
+</html>
