@@ -33,8 +33,8 @@ def save_data(data):
         )
 
         if not Student.objects.filter(matriculation=obj.matriculation).exists() and not checkListStudents(students_aux, obj):
-            if obj.matriculation.isdigit():
-                students_aux.append(obj)
+            #if obj.matriculation.isdigit():
+            students_aux.append(obj)
 
     Student.objects.bulk_create(students_aux)
 
