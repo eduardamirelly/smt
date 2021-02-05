@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect
-from .forms import DataExcelForm
+from .forms import DataExcelForm, MatriculationStudent
 from .models import Student, PhonesStudent
 from django.core.files.storage import FileSystemStorage
 from .import_file import excel_read, save_data
@@ -33,3 +33,21 @@ def importFile(request):
 
     return render(request, 'importStudents.html', {'form': form})
 
+def loginMatriculationStudent(request):
+    if request.method == 'POST':
+        form = MatriculationStudent(request.POST)
+
+        if form.is_valid():
+            if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
+                redirect('editor-student')
+            else:
+                print('não')
+
+    else:
+        form = MatriculationStudent()
+
+    return render(request, 'loginMatriculation.html', {'form': form})
+    
+
+def editorStudent(request):
+    return render(request, 'editorStudent.html')
