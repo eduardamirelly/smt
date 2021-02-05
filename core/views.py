@@ -40,9 +40,8 @@ def loginMatriculationStudent(request):
 
         if form.is_valid():
             if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
-                redirect('editor-student')
-            else:
-                print('não')
+                student = Student.objects.get(matriculation=request.POST['matriculation'])
+                return redirect('editor-student', pk=student.pk)
 
     else:
         form = MatriculationStudent()
@@ -50,8 +49,16 @@ def loginMatriculationStudent(request):
     return render(request, 'loginMatriculation.html', {'form': form})
     
 
-def editorStudent(request):
-    return render(request, 'editorStudent.html')
+def editorStudent(request, pk):
+    data_student = Student.objects.get(pk=pk)
+    phones_objs = PhonesStudent.objects.all()
+    phones = []
+
+    for p in phones_objs:
+        if p.student.pk == pk:
+            phones.append(p.phone)
+
+    return render(request, 'editorStudent.html', {'data_student': data_student, 'phones': phones})
 
 
 #Anamnese ↓

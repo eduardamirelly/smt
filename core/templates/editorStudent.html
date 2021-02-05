@@ -5,7 +5,7 @@
 <head>
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Login Matrícula | IFRN</title>
+    <title>Dados do Estudante | IFRN</title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width, initial-scale=1">
     <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
@@ -14,5 +14,43 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    
+
+    <section>
+        <div class="container">
+            <h1>Dados</h1>
+            <div>
+                <p>{{ data_student.name }}</p>
+            </div>
+            <div>
+                <p>{{ data_student.campus }}</p>
+            </div>
+            <div>
+                <p>{{ data_student.code_course }}</p>
+            </div>
+            <div>
+                <p>{{ data_student.desc_course }}</p>
+            </div>
+            <div>
+                <p>{{ data_student.email_acad }}</p>
+            </div>
+            <div>
+                <p>{{ data_student.gender }}</p>
+            </div>
+            <div>
+                <p>{{ data_student.status_course }}</p>
+            </div>
+            <div>
+                <p>{{ data_student.class_school }}</p>
+            </div>
+            <div>
+                <p>{{ data_student.shift }}</p>
+            </div>
+            {% for ph in phones %}
+            <div>
+                <p>{{ ph }}</p>
+            </div>
+            {% endfor %}
+        </div>
+    </section>
+
 </body>
