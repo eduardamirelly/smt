@@ -1,0 +1,126 @@
+{% load static %}
+
+<html>
+<head>
+    <link rel="stylesheet" href="{% static'css/materialize.css' %}">
+	<link rel="stylesheet" href="{% static 'customC.css' %}">
+</head>
+<body class="center-align">
+		<h4>Formulário COVID-19</h4>
+		<p style="font-size: 20px;">Atenção! Preencha todos os campos corretamente e com sinceridade do formulário abaixo.</p>
+			<div class="container">
+        		<div class="z-depth-3" style="display: inline-block; padding: 10px 10px 0px 10px; background-color: white; border-radius: 15px;">
+        			<div class="row">
+
+						<form class="col s12"  action="#">
+							<p style="text-align: left">Selecione os sintomas apresentados: </p>
+							<div class="caixa">
+					    		<p>
+					      			<label>
+					       				<input type="checkbox" />
+					        			<span style="color: black">Febre</span>
+					      			</label>
+					    		</p>
+
+					    		<p>
+					     			<label>
+					        			<input type="checkbox" />
+					        			<span style="color: black">Tosse seca</span>
+					      			</label>
+					   			</p>
+
+					    		<p>
+					      			<label>
+					        			<input type="checkbox" />
+					        			<span style="color: black">Dor de garganta</span>
+					      			</label>
+					    		</p>
+
+					    		<p>
+					      			<label>
+					        			<input type="checkbox" />
+					        			<span style="color: black">Dor de cabeça</span>
+					      			</label>
+					   			</p>
+
+					    		<p>
+					     			 <label>
+					        			<input type="checkbox" />
+					        			<span style="color: black">Dores no corpo</span>
+					      			</label>
+					    		</p>
+
+					    		<p>
+					      			<label>
+					        			<input type="checkbox" />
+					        			<span style="color: black">Cansaço ou fraqueza</span>
+					      			</label>
+					    		</p>
+
+					    		<p>
+					      			<label>
+					        			<input type="checkbox" />
+					        			<span style="color: black">Dificuldade de respirar</span>
+					      			</label>
+					   			</p>
+					    
+					    		<p>
+					      			<label>
+					        			<input type="checkbox" />
+					        			<span style="color: black">Congestão nasal</span>
+					     	 		</label>
+					    		</p>
+					    
+					    		<p>
+					      			<label>
+					        			<input type="checkbox" />
+					        			<span style="color: black">Conjuntivite</span>
+					      			</label>
+					   	 		</p>
+					    
+								<p>
+								     <label>
+								        <input type="checkbox" />
+								        <span style="color: black">Perda do paladar ou olfato</span>
+								     </label>
+								</p>
+
+								<p>
+								     <label>
+								        <input type="checkbox" />
+								        <span style="color: black">Calafrios</span>
+								     </label>
+								</p>
+
+								<p>
+								     <label>
+								        <input type="checkbox" />
+								        <span style="color: black">Diarreia</span>
+								     </label>
+								</p>
+
+								<p>
+								     <label>
+								        <input type="checkbox" />
+								        <span style="color: black">Erupção cutânea na pele ou descoloração dos dedos das mãos ou dos pés</span>
+								     </label>
+								</p>
+
+						<div class="row">
+				        	<div class="input-field col s12">
+				          		<input type="text" class="validate">
+				          		<label class="active" for="text">Caso deseje, descreva sintomas não descritos acima:</label>
+				        	</div>
+				        </div>
+
+					</form>
+				</div>
+				<div class='row'>
+                	<button class="btn"><a href="tabela.html">Enviar formulário</a></button>
+              	</div>
+	<div class="section"></div>
+</body>
+</html>
+
+
+
