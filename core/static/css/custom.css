@@ -78,6 +78,28 @@ table th{
     font-weight: 600;
 }
 
+.sec-h4 h4{
+    font-size: 1.5em;
+    font-weight: 500;
+}
+
+.sec-h4 .row{
+    margin-bottom: 0;
+}
+
+.card{
+    background-color: #59926A;
+}
+.card-action a{
+    color: #98ebad !important;
+    font-weight: 500;
+}
+
+.sec-h4 .btn-upload{
+    width: 10vw;
+    height: 45px;
+}
+
 @media screen and (max-width: 700px){
     .title-h2 h2{
         font-size: 2.4em;

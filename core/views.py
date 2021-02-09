@@ -41,7 +41,7 @@ def loginMatriculationStudent(request):
         if form.is_valid():
             if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
                 student = Student.objects.get(matriculation=request.POST['matriculation'])
-                return redirect('editor-student', pk=student.pk)
+                return redirect('data-student', pk=student.pk)
 
     else:
         form = MatriculationStudent()
@@ -49,7 +49,7 @@ def loginMatriculationStudent(request):
     return render(request, 'loginMatriculation.html', {'form': form})
     
 
-def editorStudent(request, pk):
+def dataStudent(request, pk):
     data_student = Student.objects.get(pk=pk)
     phones_objs = PhonesStudent.objects.all()
     phones = []
@@ -58,7 +58,7 @@ def editorStudent(request, pk):
         if p.student.pk == pk:
             phones.append(p.phone)
 
-    return render(request, 'editorStudent.html', {'data_student': data_student, 'phones': phones})
+    return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones})
 
 
 #Anamnese ↓
