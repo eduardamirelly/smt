@@ -10,6 +10,7 @@ urlpatterns = [
     path('data/<int:pk>/', views.dataStudent, name='data-student'),
     path('', views.loginMatriculationStudent, name='login-matriculation'),
     path('anamnese/listar/', views.listAnamneses, name='list-anamneses'),
+    path('anamnese/detalhar<int:pk>/', views.showAnamnese, name='show-anamnese'),
     path('anamnese/cadastrar/', views.registerAnamnese, name='register-anamnese'),
     path('anamnese/excluir<int:pk>/', views.deleteAnamnese, name='delete-anamnese'),
 ]

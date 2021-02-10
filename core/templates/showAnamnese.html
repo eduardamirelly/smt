@@ -1,0 +1,113 @@
+{% load static %}
+
+<html>
+<head>
+	<link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+	<link rel="stylesheet" href="{% static 'customC.css' %}">
+</head>
+<body class='center-align'>
+
+	<p style="font-size: 20px;">Respostas registradas do Formulário COVID-19:</p>
+  <table style="background-color: white;" class="z-depth-3 center-align">
+    <thead>
+      <tr>
+        <th style="background-color: #4DB6AC">Sintomas</th>
+        <th style="background-color: #4DB6AC">Respostas</th>
+      </tr>
+    </thead>
+    
+    <tbody>
+      {% if anamnese.fever %}
+      <tr>
+        <th style="background-color: #B2DFDB">Febre</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+      
+      {% if anamnese.fatigue %}
+      <tr>
+        <th style="background-color: #B2DFDB">Cansaço ou fraqueza</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+      
+      {% if anamnese.dry_cough %}
+      <tr>
+        <th style="background-color: #B2DFDB">Tosse seca</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+      
+      {% if anamnese.body_ache %}
+      <tr>
+        <th style="background-color: #B2DFDB">Dores no corpo</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+
+      {% if anamnese.nasal_congestion %}
+      <tr>
+        <th style="background-color: #B2DFDB">Congestão nasal</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+      
+      {% if anamnese.headache %}
+      <tr>
+        <th style="background-color: #B2DFDB">Dor de cabeça</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+      
+      {% if anamnese.fever %}
+      <tr>
+        <th style="background-color: #B2DFDB">Falta de ar</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+
+      {% if anamnese.conjunctivitis %}
+      <tr>
+        <th style="background-color: #B2DFDB">Conjuntivite</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+
+      {% if anamnese.sore_throat %}
+      <tr>
+        <th style="background-color: #B2DFDB">Dor de garganta</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+      
+      {% if anamnese.diarrhea %}
+      <tr>
+        <th style="background-color: #B2DFDB">Diarréia</th>
+        <td> Sim </td>
+      </tr>
+      {% endif %}
+      
+      {% if anamnese.loss_of_taste_or_smell %}
+      <tr>
+        <th style="background-color: #B2DFDB">Perda do paladar ou olfato</th>
+  			<td> Sim </td>
+      </tr>
+      {% endif %}
+      
+      {% if anamnese.rash_or_discoloration %}
+      <tr>
+        <th style="background-color: #B2DFDB">Erupção cutânea na pele ou descoloração dos dedos das mãos ou dos pés</th>
+        <td> <td> Sim </td> </td>
+      </tr>
+      {% endif %}
+      
+      <tr>
+        <th style="background-color: #B2DFDB">Outros Sintomas</th>
+          <td> {{anamnese.other_symptons}} </td>
+      </tr>
+    </tbody>
+  </table>
+  <a href="{% url 'list-anamneses' %}" class="btn"> Voltar </a>
+  <div class="section"></div>
+  </body>
+</html>

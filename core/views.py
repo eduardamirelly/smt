@@ -88,6 +88,10 @@ def listAnamneses(request):
     anamneses = Anamnese.objects.all()
     return render(request, 'listAnamnese.html', {'anamneses':anamneses})
 
+def showAnamnese(request, pk):
+    anamnese = get_object_or_404(Anamnese, pk=pk)
+    return render(request, 'showAnamnese.html', {"anamnese":anamnese})
+
 def registerAnamnese(request):
     form = AnamneseForm()
     if request.method == 'POST':
