@@ -31,7 +31,6 @@ def save_data(data):
             class_school=data['Turma'].loc[x], 
             shift=data['Turno'].loc[x]
         )
-        print(data['Sexo'].loc[x])
 
         if not Student.objects.filter(matriculation=obj.matriculation).exists() and not checkListStudents(students_aux, obj):
             students_aux.append(obj)
