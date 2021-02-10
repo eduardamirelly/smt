@@ -1,15 +1,10 @@
-<<<<<<< HEAD
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import DataExcelForm, AnamneseForm
+from .forms import DataExcelForm, MatriculationStudent, AnamneseForm, ImageStudentForm
 from .models import Student, PhonesStudent, Anamnese
-=======
-from django.shortcuts import render, redirect
-from .forms import DataExcelForm, MatriculationStudent
-from .models import Student, PhonesStudent
->>>>>>> dev
 from django.core.files.storage import FileSystemStorage
 from .import_file import excel_read, save_data
 import pandas as pd
+import os
 
 # Create your views here.
 
@@ -46,9 +41,8 @@ def loginMatriculationStudent(request):
 
         if form.is_valid():
             if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
-                redirect('editor-student')
-            else:
-                print('não')
+                student = Student.objects.get(matriculation=request.POST['matriculation'])
+                return redirect('data-student', pk=student.pk)
 
     else:
         form = MatriculationStudent()
@@ -56,8 +50,37 @@ def loginMatriculationStudent(request):
     return render(request, 'loginMatriculation.html', {'form': form})
     
 
-def editorStudent(request):
-    return render(request, 'editorStudent.html')
+def dataStudent(request, pk):
+
+    if request.method == 'POST' and len(request.FILES) != 0:
+        form = ImageStudentForm(request.FILES)
+
+        if form.is_valid():
+
+            student = Student.objects.get(pk=pk)
+            file = request.FILES['file']
+
+            filename, fileextension = os.path.splitext(file.name)
+
+            file.name = f'user_{pk}{fileextension}'
+            
+            student.photo = file
+            student.save()
+
+    else:
+        form = ImageStudentForm()
+
+    data_student = Student.objects.get(pk=pk)
+    phones_objs = PhonesStudent.objects.all()
+    phones = []
+
+    for p in phones_objs:
+        if p.student.pk == pk:
+            phones.append(p.phone)
+
+
+    return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
+
 
 
 #Anamnese ↓

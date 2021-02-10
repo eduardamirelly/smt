@@ -22,18 +22,20 @@ class Student(models.Model):
     gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
 
     STATUS_COURSE_CHOICES = [
-        ('M', 'Matriculado'),
-        ('D', 'Desativado'),
+        ('Matriculado', 'Matriculado'),
+        ('Desativado', 'Desativado'),
     ]
-    status_course = models.CharField(max_length=1, choices=STATUS_COURSE_CHOICES)
+    status_course = models.CharField(max_length=11, choices=STATUS_COURSE_CHOICES)
     class_school = models.CharField('Turma', max_length=20)
 
     SHIFT_CHOICES = [
-        ('M', 'Matutino'),
-        ('V', 'Vespertino'),
-        ('N', 'Noturno'),
+        ('Matutino', 'Matutino'),
+        ('Vespertino', 'Vespertino'),
+        ('Noturno', 'Noturno'),
     ]
     shift = models.CharField(max_length=10, choices=SHIFT_CHOICES)
+
+    photo = models.ImageField(upload_to='users/pictures/', blank=True)
 
     def __str__(self):
         return self.name

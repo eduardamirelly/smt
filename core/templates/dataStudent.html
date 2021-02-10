@@ -1,0 +1,110 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>Dados do Estudante | IFRN</title>
+    <meta name="description" content="">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
+    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
+    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
+</head>
+<body>
+
+    <section>
+        <div class="container">
+            <div class="center title-h2">
+                <h2>Dados do Estudante</h2>
+            </div>
+            <div class="row">
+                <div>
+                    <div class="sec-h4 col s3">
+                        <h4>Nome</h4>
+                        <p>{{ data_student.name }}</p>
+                    </div>
+                    <div class="sec-h4 col s3">
+                        <h4>Matrícula</h4>
+                        <p>{{ data_student.matriculation }}</p>
+                    </div>
+                    <div class="sec-h4 col s3">
+                        <h4>Campus</h4>
+                        <p>{{ data_student.campus }}</p>
+                    </div>
+                    <div class="sec-h4 col s3">
+                        <h4>Código do Curso</h4>
+                        <p>{{ data_student.code_course }}</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="sec-h4 col s3">
+                        <h4>E-mail Acadêmico</h4>
+                        <p>{{ data_student.email_acad }}</p>
+                    </div>
+                    <div class="sec-h4 col s3">
+                        <h4>Turma</h4>
+                        <p>{{ data_student.class_school }}</p>
+                    </div>
+                    <div class="sec-h4 col s3">
+                        <h4>Sexo</h4>
+                        <p>{{ data_student.gender }}</p>
+                    </div>
+                    <div class="sec-h4 col s3">
+                        <h4>Turno</h4>
+                        <p>{{ data_student.shift }}</p>
+                    </div>
+                </div>
+                <div>
+                    <div class="sec-h4 col s6">
+                        <h4>Telefone(s)</h4>
+                        {% for ph in phones %}
+                        <div class="card darken-1">
+                            <div class="card-content white-text">
+                                <span class="card-title">{{ ph }}</span>
+                            </div>
+                            <div class="card-action">
+                                <a href="#">Edit</a>
+                                <a href="#">Delete</a>
+                            </div>
+                        </div>
+                        {% endfor %}
+                    </div>
+                </div>
+                <div>
+                    <div class="sec-h4 col s6 center">
+                        <h4>Imagem</h4>
+                        {% if not data_student.photo %}
+                        <form method="POST" enctype="multipart/form-data">
+                            {% csrf_token %}
+                            <div class="form-file">
+                                <div class="file-field input-field">
+                                    <div class="btn btn-large btn-file">
+                                        <span>File</span>
+                                        {{ form.file }}
+                                    </div>
+                                    <div class="file-path-wrapper">
+                                        <input type="text" class="file-path validate">
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="div-submit-btn center">
+                                <button class="btn btn-upload" type="submit">Upload</button>
+                            </div>
+                        </form>
+                        {% endif %}
+                        {% if data_student.photo %}
+                            <img width="400" src="{{ data_student.photo.url }}">
+                        {% endif %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+</body>
+</html>
