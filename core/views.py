@@ -4,6 +4,7 @@ from .models import Student, PhonesStudent, Anamnese
 from django.core.files.storage import FileSystemStorage
 from .import_file import excel_read, save_data
 import pandas as pd
+import os
 
 # Create your views here.
 
@@ -55,7 +56,17 @@ def dataStudent(request, pk):
         form = ImageStudentForm(request.FILES)
 
         if form.is_valid():
-            print('oi')
+
+            student = Student.objects.get(pk=pk)
+            file = request.FILES['file']
+
+            filename, fileextension = os.path.splitext(file.name)
+
+            file.name = f'user_{pk}{fileextension}'
+            
+            student.photo = file
+            student.save()
+
     else:
         form = ImageStudentForm()
 
