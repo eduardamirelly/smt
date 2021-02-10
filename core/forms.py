@@ -17,4 +17,4 @@ class AnamneseForm(forms.ModelForm):
     class Meta:
         model = Anamnese
         fields = ['fever', 'fatigue', 'dry_cough', 'body_ache', 'nasal_congestion', 'headache', 'conjunctivitis', 
-        'sore_throat' , 'diarrhea', 'loss_of_taste_or_smell', 'rash_or_discoloration', 'other_symptons']
+        'sore_throat' , 'diarrhea', 'loss_of_taste_or_smell', 'rash_or_discoloration', 'registration', 'other_symptons']

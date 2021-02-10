@@ -21,7 +21,82 @@
             <form method="POST">
                 {% csrf_token %}
                 {{ formulario.as_p }}
-                <button type="submit" class="btn white-text"> Cadastrar </button>
+                <!-- <p>
+                    <label for="id_fever">
+                        <input type="checkbox" name="fatigue" id="id_fever">
+                        <span>Febre</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_fatigue">
+                        <input type="checkbox" name="fatigue" id="id_fatigue">
+                        <span>Cansaço</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_dry_cough">
+                        <input type="checkbox" name="fatigue" id="id_dry_cough">
+                        <span>Tosse seca</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_body_ache">
+                        <input type="checkbox" name="fatigue" id="id_body_ache">
+                        <span>Dores no corpo</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_nasal_congestion">
+                        <input type="checkbox" name="fatigue" id="id_nasal_congestion">
+                        <span>Congestão nasal</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_headache">
+                        <input type="checkbox" name="fatigue" id="id_headache">
+                        <span>Dor de cabeça</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_conjunctivitis">
+                        <input type="checkbox" name="fatigue" id="id_conjunctivitis">
+                        <span>Conjuntivite</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_sore_throat">
+                        <input type="checkbox" name="fatigue" id="id_sore_throat">
+                        <span>Dor de garganta</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_diarrhea">
+                        <input type="checkbox" name="fatigue" id="id_diarrhea">
+                        <span>Diarréia</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_loss_of_taste_or_smell">
+                        <input type="checkbox" name="fatigue" id="id_loss_of_taste_or_smell">
+                        <span>Perda de paladar ou olfato</span>
+                    </label>
+                </p>
+                <p>
+                    <label for="id_rash_or_discoloration">
+                        <input type="checkbox" name="fatigue" id="id_rash_or_discoloration">
+                        <span>Erupção cutânea na pele ou descoloração</span>
+                    </label>
+                </p>
+                <div class="row">
+                    <div class="input-field col s12">
+                        <textarea class="materialize-textarea">Nenhum</textarea>
+                        <label for="textarea1">Outros sintomas:</label>
+                    </div>
+                </div> -->
+                <div>
+                    <a href="{% url 'list-anamneses' %}" class="btn"> Voltar</a>
+                    <button type="submit" class="btn white-text"> Cadastrar </button>
+                </div>
             </form>
         </div>
     </div>
