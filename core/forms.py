@@ -7,6 +7,12 @@ class DataExcelForm(forms.Form):
         attrs={'type': 'file', 'accept': 'application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
     )
 
+class ImageStudentForm(forms.Form):
+    
+    file = forms.FileField(widget=forms.TextInput(
+        attrs={'type': 'file', 'accept': 'image/*'})
+    )
+
 class MatriculationStudent(forms.Form):
     
     matriculation = forms.CharField(max_length=14, widget=forms.TextInput(

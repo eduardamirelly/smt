@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import DataExcelForm, MatriculationStudent, AnamneseForm
+from .forms import DataExcelForm, MatriculationStudent, AnamneseForm, ImageStudentForm
 from .models import Student, PhonesStudent, Anamnese
 from django.core.files.storage import FileSystemStorage
 from .import_file import excel_read, save_data
@@ -50,6 +50,15 @@ def loginMatriculationStudent(request):
     
 
 def dataStudent(request, pk):
+
+    if request.method == 'POST' and len(request.FILES) != 0:
+        form = ImageStudentForm(request.FILES)
+
+        if form.is_valid():
+            print('oi')
+    else:
+        form = ImageStudentForm()
+
     data_student = Student.objects.get(pk=pk)
     phones_objs = PhonesStudent.objects.all()
     phones = []
@@ -58,7 +67,9 @@ def dataStudent(request, pk):
         if p.student.pk == pk:
             phones.append(p.phone)
 
-    return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones})
+
+    return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
+
 
 
 #Anamnese ↓
