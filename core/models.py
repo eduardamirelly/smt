@@ -19,13 +19,13 @@ class Student(models.Model):
         ('F', 'Feminino'),
         ('M', 'Masculino'),
     ]
-    gender = models.CharField("Gênero",     max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField('Gênero', max_length=1, choices=GENDER_CHOICES)
 
     STATUS_COURSE_CHOICES = [
         ('Matriculado', 'Matriculado'),
         ('Desativado', 'Desativado'),
     ]
-    status_course = models.CharField('Estado no curso', max_length=1, choices=STATUS_COURSE_CHOICES)
+    status_course = models.CharField('Estado no curso', max_length=11, choices=STATUS_COURSE_CHOICES)
     class_school = models.CharField('Turma', max_length=20)
 
     SHIFT_CHOICES = [
