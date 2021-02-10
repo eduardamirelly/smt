@@ -19,13 +19,13 @@ class Student(models.Model):
         ('F', 'Feminino'),
         ('M', 'Masculino'),
     ]
-    gender = models.CharField(max_length=1, choices=GENDER_CHOICES)
+    gender = models.CharField("Gênero",     max_length=1, choices=GENDER_CHOICES)
 
     STATUS_COURSE_CHOICES = [
         ('M', 'Matriculado'),
         ('D', 'Desativado'),
     ]
-    status_course = models.CharField(max_length=1, choices=STATUS_COURSE_CHOICES)
+    status_course = models.CharField("Estado no curso", max_length=1, choices=STATUS_COURSE_CHOICES)
     class_school = models.CharField('Turma', max_length=20)
 
     SHIFT_CHOICES = [
@@ -33,7 +33,7 @@ class Student(models.Model):
         ('V', 'Vespertino'),
         ('N', 'Noturno'),
     ]
-    shift = models.CharField(max_length=10, choices=SHIFT_CHOICES)
+    shift = models.CharField("Turno", max_length=10, choices=SHIFT_CHOICES)
 
     def __str__(self):
         return self.name
@@ -53,6 +53,7 @@ class Anamnese(models.Model):
     body_ache = models.BooleanField("Dores no corpo")
     nasal_congestion = models.BooleanField("Congestão nasal")
     headache = models.BooleanField("Dor de cabeça")
+    shortness_of_breathe = models.BooleanField("Falta de ar")
     conjunctivitis = models.BooleanField("Conjuntivite")
     sore_throat = models.BooleanField("Dor de garganta")
     diarrhea = models.BooleanField("Diarréia")
@@ -60,6 +61,7 @@ class Anamnese(models.Model):
     rash_or_discoloration = models.BooleanField("Erupção cutânea ou descoloração da pele")
     other_symptons = models.TextField("Outros sintomas", default="Nenhum")
 
-    #aluno = Aluno()
+    registration = models.CharField("Matrícula", max_length=14, default="00000000000000")
+    # student = models.ForeignKey(Student, on_delete=models.RESTRICT)
     datetime = models.DateTimeField(auto_now_add=True)
     attendance_authorization = models.BooleanField(default=True)

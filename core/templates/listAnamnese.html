@@ -14,7 +14,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body>
-    <table>
+    <table style="margin-bottom: 8px;">
         <thead>
             <tr>
                 <th> ID Anamnese </th>
@@ -27,7 +27,7 @@
         <tbody>
             {% for form in anamneses %}
                 <tr>
-                    <td>{{ form.id }}</td>
+                    <td> <a href="{% url 'show-anamnese' pk=form.id %}"> {{ form.id }} </a> </td>
                     <!-- <td>{{ form.aluno }}</td> -->
                     <td>{{ form.attendance_authorization }}</td>
                     <td>{{ form.datetime }}</td>
@@ -37,6 +37,9 @@
             {% endfor %}
         </tbody>
     </table>
+    <div class="center-align">
+        <a href="{% url 'register-anamnese' %}" class="btn"> Cadastrar </a>
+    </div>
 
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
 </body>

@@ -1,12 +1,17 @@
-<<<<<<< HEAD
+# <<<<<<< HEAD
+# from django.shortcuts import render, redirect, get_object_or_404
+# from .forms import DataExcelForm, AnamneseForm
+# from .models import Student, PhonesStudent, Anamnese
+# =======
+# from django.shortcuts import render, redirect
+# from .forms import DataExcelForm, MatriculationStudent
+# from .models import Student, PhonesStudent
+# >>>>>>> dev
+
 from django.shortcuts import render, redirect, get_object_or_404
-from .forms import DataExcelForm, AnamneseForm
+from .forms import DataExcelForm, MatriculationStudent, AnamneseForm
 from .models import Student, PhonesStudent, Anamnese
-=======
-from django.shortcuts import render, redirect
-from .forms import DataExcelForm, MatriculationStudent
-from .models import Student, PhonesStudent
->>>>>>> dev
+
 from django.core.files.storage import FileSystemStorage
 from .import_file import excel_read, save_data
 import pandas as pd
@@ -64,6 +69,10 @@ def editorStudent(request):
 def listAnamneses(request):
     anamneses = Anamnese.objects.all()
     return render(request, 'listAnamnese.html', {'anamneses':anamneses})
+
+def showAnamnese(request, pk):
+    anamnese = get_object_or_404(Anamnese, pk=pk)
+    return render(request, 'showAnamnese.html', {"anamnese":anamnese})
 
 def registerAnamnese(request):
     form = AnamneseForm()
