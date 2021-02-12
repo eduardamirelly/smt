@@ -8,6 +8,7 @@ urlpatterns = [
     path('import/excel/', views.importFile, name='upload-file'),
     path('list/students/', views.listStudents, name='list-students'),
     path('data/<int:pk>/', views.dataStudent, name='data-student'),
+    path('data/<int:pk>/instant/image/', views.imageInstant, name='image-instant'),
     path('', views.loginMatriculationStudent, name='login-matriculation'),
     path('anamnese/listar/', views.listAnamneses, name='list-anamneses'),
     path('anamnese/detalhar<int:pk>/', views.showAnamnese, name='show-anamnese'),

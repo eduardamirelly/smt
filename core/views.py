@@ -81,6 +81,8 @@ def dataStudent(request, pk):
 
     return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
 
+def imageInstant(request, pk):
+    return render(request, 'photoStudent.html')
 
 
 #Anamnese ↓
