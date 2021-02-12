@@ -26,26 +26,15 @@
         <div class="container">
             <div class="center title-h2">
                 <h2>Tirar Foto do Estudante</h2>
+            </div>
+            <div class="center camera">
                 <video autoplay="true" id="videoElement"></video>
             </div>
         </div>
     </section>
 
-    
-    <script>
-        var video = document.querySelector("#videoElement");
-        if (navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-            video.srcObject = stream;
-            })
-            .catch(function (err0r) {
-            console.log("Something went wrong!");
-            });
-        }
-    </script>
-
+    <script type="text/javascript" src="{% static 'js/capture-image.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-    
+
 </body>
 </html>
