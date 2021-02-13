@@ -67,3 +67,7 @@ class Anamnese(models.Model):
     # student = models.ForeignKey(Student, on_delete=models.RESTRICT)
     datetime = models.DateTimeField(auto_now_add=True)
     attendance_authorization = models.BooleanField(default=True)
+
+class Entrada(models.Model):
+    student = models.ForeignKey(Student, on_delete=models.CASCADE)
+    datetime = models.DateTimeField(auto_now_add=True)
