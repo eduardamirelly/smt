@@ -101,7 +101,7 @@ def registerAnamnese(request):
         if form.is_valid():
             form.save()
             return redirect('list-anamneses')
-    return render(request, 'formAnamnese.html', {'formulario':form})
+    return render(request, 'formAnamnese.html', {'form': form})
 
 def deleteAnamnese(request, pk):
     anamnese = get_object_or_404(Anamnese, pk=pk)
