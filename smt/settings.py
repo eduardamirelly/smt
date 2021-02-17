@@ -122,4 +122,3 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = BASE_DIR / 'core/media'
 MEDIA_URL = 'core/media/'
-
