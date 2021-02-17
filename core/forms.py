@@ -22,5 +22,21 @@ class MatriculationStudent(forms.Form):
 class AnamneseForm(forms.ModelForm):
     class Meta:
         model = Anamnese
-        fields = ['fever', 'fatigue', 'dry_cough', 'body_ache', 'nasal_congestion', 'headache', 'conjunctivitis', 
-        'sore_throat' , 'diarrhea', 'loss_of_taste_or_smell', 'rash_or_discoloration', 'registration', 'other_symptons']
+        fields = ['fever', 'fatigue', 'dry_cough', 'body_ache', 'nasal_congestion', 'headache', 'shortness_of_breathe', 'conjunctivitis', 
+        'sore_throat' , 'diarrhea', 'loss_of_taste_or_smell', 'rash_or_discoloration', 'other_symptons']
+
+        widgets = {
+            'fever': forms.TextInput(attrs={'type': 'checkbox'}),
+            'fatigue': forms.TextInput(attrs={'type': 'checkbox'}),
+            'dry_cough': forms.TextInput(attrs={'type': 'checkbox'}),
+            'body_ache': forms.TextInput(attrs={'type': 'checkbox'}),
+            'nasal_congestion': forms.TextInput(attrs={'type': 'checkbox'}),
+            'headache': forms.TextInput(attrs={'type': 'checkbox'}),
+            'shortness_of_breathe': forms.TextInput(attrs={'type': 'checkbox'}),
+            'conjunctivitis': forms.TextInput(attrs={'type': 'checkbox'}),
+            'sore_throat': forms.TextInput(attrs={'type': 'checkbox'}),
+            'diarrhea': forms.TextInput(attrs={'type': 'checkbox'}),
+            'loss_of_taste_or_smell': forms.TextInput(attrs={'type': 'checkbox'}),
+            'rash_or_discoloration': forms.TextInput(attrs={'type': 'checkbox'}),
+            'other_symptons': forms.Textarea(attrs={'class': 'materialize-textarea'}),
+        }

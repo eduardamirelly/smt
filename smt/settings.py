@@ -37,7 +37,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
-    "django_static_jquery3",
+    #'django_static_jquery3',
     'core',
 ]
 
@@ -123,4 +123,3 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = BASE_DIR / 'core/media'
 MEDIA_URL = 'core/media/'
-
