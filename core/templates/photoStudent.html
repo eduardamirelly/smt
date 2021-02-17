@@ -14,10 +14,16 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
         #videoElement {
-            width: 500px;
-            height: 375px;
+            width: 400px;
+            height: 300px;
             background-color: #666;
         }
+        #canvas{
+            background-color: #242424;
+            width: 400px;
+            height: 300px;
+        }
+
     </style>
 </head>
 <body>
@@ -26,26 +32,23 @@
         <div class="container">
             <div class="center title-h2">
                 <h2>Tirar Foto do Estudante</h2>
-                <video autoplay="true" id="videoElement"></video>
             </div>
+            <div class="row">
+                <div class="center col s6">
+                    <video autoplay="true" id="videoElement"></video>
+                    <button type="button" id="startbutton">Tirar Foto</button>
+                </div>
+                <div class="center col s6">
+                    <canvas id="canvas"></canvas>
+                    <img src="" alt="" id="photo">
+                </div>
+            </div>
+
         </div>
     </section>
 
-    
-    <script>
-        var video = document.querySelector("#videoElement");
-        if (navigator.mediaDevices.getUserMedia) {
-            navigator.mediaDevices.getUserMedia({ video: true })
-            .then(function (stream) {
-            video.srcObject = stream;
-            })
-            .catch(function (err0r) {
-            console.log("Something went wrong!");
-            });
-        }
-    </script>
-
+    <script type="text/javascript" src="{% static 'js/capture-image.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-    
+
 </body>
 </html>
