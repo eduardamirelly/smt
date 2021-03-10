@@ -82,7 +82,18 @@ def dataStudent(request, pk):
     return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
 
 def imageInstant(request, pk):
-    return render(request, 'photoStudent.html')
+    print('eiiiiiiiiiiiiiiii')
+    if request.POST == 'POST':
+        form = ImageStudentForm(request.FILES)
+
+        if form.is_valid():
+            print('oi')
+
+    else:
+        form = ImageStudentForm()
+
+
+    return render(request, 'photoStudent.html', {'form': form})
 
 
 #Anamnese ↓
