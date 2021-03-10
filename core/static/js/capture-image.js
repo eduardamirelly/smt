@@ -8,6 +8,7 @@
         var canvas = null;
         var photo = null;
         var button_take_picture = null;
+        var input_file = null;
 
         function startup(){
 
@@ -67,7 +68,28 @@
 
                 var data = canvas.toDataURL('image/png');
                 photo.setAttribute('src', data);
-                //testando
+                input_file = document.querySelector('input[type="file"]');
+                //input_file.src = data;
+                console.log(data);
+
+                const csrftoken = document.querySelector('[name=csrfmiddlewaretoken]').value;
+
+
+                
+                $.ajax({
+                    type: 'POST',
+                    url: '?',
+                    contentType: 'image/png',
+                    data: {
+                        'content': data,
+                        'csrfmiddlewaretoken': csrftoken,
+                    },
+                    dataType: 'png',
+                    sucess: function(){
+                        console.log('dados inseridos com sucesso');
+                    },
+                });
+
             }else{
                 clearphoto();
             }

@@ -5,7 +5,7 @@ from django.core.files.storage import FileSystemStorage
 from .import_file import excel_read, save_data
 import pandas as pd
 import os
-
+from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 
 #Alunos ↓
@@ -81,19 +81,14 @@ def dataStudent(request, pk):
 
     return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
 
+@csrf_protect
 def imageInstant(request, pk):
-    print('eiiiiiiiiiiiiiiii')
-    if request.POST == 'POST':
-        form = ImageStudentForm(request.FILES)
+    s = request.GET
+    print(s)
 
-        if form.is_valid():
-            print('oi')
+    print('oi')
 
-    else:
-        form = ImageStudentForm()
-
-
-    return render(request, 'photoStudent.html', {'form': form})
+    return render(request, 'photoStudent.html')
 
 
 #Anamnese ↓

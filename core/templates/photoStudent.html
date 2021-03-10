@@ -47,12 +47,8 @@
                     <canvas id="canvas"></canvas>
                 </div>
                 <div>
+                    {% csrf_token %}
                     <img id="photo">
-                    <form action="POST" enctype="multipart/form-data">
-                        {% csrf_token %}
-                        {{ form.file }}
-                        <button type="submit">Enviar</button>
-                    </form>
                 </div>
             </div>
         </div>
