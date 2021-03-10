@@ -13,12 +13,17 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        #videoElement {
+        #video {
             width: 400px;
             height: 300px;
             background-color: #666;
         }
+
         #canvas{
+            display: none;
+        }
+
+        #photo{
             background-color: #242424;
             width: 400px;
             height: 300px;
@@ -35,12 +40,19 @@
             </div>
             <div class="row">
                 <div class="center col s6">
-                    <video autoplay="true" id="videoElement"></video>
-                    <button type="button" id="startbutton">Tirar Foto</button>
+                    <video autoplay="true" id="video"></video>
+                    <button type="button" id="button-take-picture">Tirar Foto</button>
                 </div>
                 <div class="center col s6">
                     <canvas id="canvas"></canvas>
-                    <img src="" alt="" id="photo">
+                </div>
+                <div>
+                    <img id="photo">
+                    <form action="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        {{ form.file }}
+                        <button type="submit">Enviar</button>
+                    </form>
                 </div>
             </div>
         </div>
