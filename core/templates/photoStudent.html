@@ -40,8 +40,8 @@
             <div class="row">
                 <div class="center col s6">
                     <div id="camera"></div>
-                    <button type="button" onclick="startCamera()">Open Camera</button>
-                    <button type="button" onclick="stopCamera()">Stop Camera</button>
+                    <button type="button" onclick="startCamera()">Abrir Camera</button>
+                    <button type="button" onclick="stopCamera()">Fechar Camera</button>
                     <button type="button" id="button-take-picture" onclick="take_snapshot()">Tirar Foto</button>
                     <button type="button" onclick="upload()">Enviar</button>
                 </div>
@@ -49,10 +49,10 @@
                     <canvas id="canvas"></canvas>
                 </div>
                 <div>
-                    <img id="results">
+                    <img id="preview">
                     <form id="upload-form" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <input type="hidden" name="arquivo" id="arquivo">
+                        <input type="hidden" name="file" id="file">
                     </form>
                 </div>
             </div>
@@ -64,6 +64,7 @@
 
     <script>
         var data = ''
+
         function startCamera(){
             Webcam.set({
                 width: 400,
@@ -76,14 +77,14 @@
 
         function take_snapshot(){
             Webcam.snap(function(data_uri){
-                document.getElementById('results').src = data_uri;
-                data = data_uri
+                document.getElementById('preview').src = data_uri;
+                data = data_uri;
             });
         }
 
         function upload(){
             var raw_image_data = data.replace(/^data\:image\/\w+\;base64\,/, '');
-            document.getElementById('arquivo').value = raw_image_data;
+            document.getElementById('file').value = raw_image_data;
             document.getElementById('upload-form').submit();
         }
 
