@@ -13,17 +13,21 @@
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
     <style>
-        #videoElement {
+        #video {
             width: 400px;
             height: 300px;
             background-color: #666;
         }
+
         #canvas{
+            display: none;
+        }
+
+        #photo{
             background-color: #242424;
             width: 400px;
             height: 300px;
         }
-
     </style>
 </head>
 <body>
@@ -35,20 +39,59 @@
             </div>
             <div class="row">
                 <div class="center col s6">
-                    <video autoplay="true" id="videoElement"></video>
-                    <button type="button" id="startbutton">Tirar Foto</button>
+                    <div id="camera"></div>
+                    <button type="button" onclick="startCamera()">Abrir Camera</button>
+                    <button type="button" onclick="stopCamera()">Fechar Camera</button>
+                    <button type="button" id="button-take-picture" onclick="take_snapshot()">Tirar Foto</button>
+                    <button type="button" onclick="upload()">Enviar</button>
                 </div>
-                <div class="center col s6">
+                <div>
                     <canvas id="canvas"></canvas>
-                    <img src="" alt="" id="photo">
+                </div>
+                <div>
+                    <img id="preview">
+                    <form id="upload-form" method="POST" enctype="multipart/form-data">
+                        {% csrf_token %}
+                        <input type="hidden" name="file" id="file">
+                    </form>
                 </div>
             </div>
-
         </div>
     </section>
 
-    <script type="text/javascript" src="{% static 'js/capture-image.js' %}"></script>
+    <script type="text/javascript" src="{% static 'js/webcam.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
+
+    <script>
+        var data = ''
+
+        function startCamera(){
+            Webcam.set({
+                width: 400,
+                height: 300,
+                image_format: 'jpeg',
+                jpeg_quality: 90
+            });
+            Webcam.attach('#camera');
+        }
+
+        function take_snapshot(){
+            Webcam.snap(function(data_uri){
+                document.getElementById('preview').src = data_uri;
+                data = data_uri;
+            });
+        }
+
+        function upload(){
+            var raw_image_data = data.replace(/^data\:image\/\w+\;base64\,/, '');
+            document.getElementById('file').value = raw_image_data;
+            document.getElementById('upload-form').submit();
+        }
+
+        function stopCamera(){
+            Webcam.reset();
+        }
+    </script>
 
 </body>
 </html>

@@ -5,7 +5,7 @@ from django.core.files.storage import FileSystemStorage
 from .import_file import excel_read, save_data
 import pandas as pd
 import os
-
+import base64
 # Create your views here.
 
 #Alunos ↓
@@ -81,7 +81,24 @@ def dataStudent(request, pk):
 
     return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
 
+
 def imageInstant(request, pk):
+
+    if request.POST:
+
+        code_str = request.POST['file']
+        code_str = base64.b64decode(code_str)
+
+        obj_student = Student.objects.get(id=pk)
+
+        filename = f'core/media/students/{obj_student.matriculation}.jpg'
+        os.makedirs(os.path.dirname(filename), exist_ok=True)
+
+        with open(filename, 'wb') as f:
+            f.write(code_str)
+
+        return redirect('data-student', pk=obj_student.pk)
+    
     return render(request, 'photoStudent.html')
 
 
