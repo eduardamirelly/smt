@@ -28,11 +28,6 @@
             width: 400px;
             height: 300px;
         }
-
-        input[type="file"]{
-            display: none;
-        }
-
     </style>
 </head>
 <body>
@@ -45,18 +40,18 @@
             <div class="row">
                 <div class="center col s6">
                     <div id="camera"></div>
-                    <!-- <video autoplay="true" id="video"></video> -->
+                    <button type="button" onclick="startCamera()">Open Camera</button>
+                    <button type="button" onclick="stopCamera()">Stop Camera</button>
                     <button type="button" id="button-take-picture" onclick="take_snapshot()">Tirar Foto</button>
-                    <button type="button" onclick="saveSnap()">Enviar</button>
+                    <button type="button" onclick="upload()">Enviar</button>
                 </div>
-                <div class="center col s6">
-                    <!-- <canvas id="canvas"></canvas> -->
+                <div>
+                    <canvas id="canvas"></canvas>
                 </div>
-                <div id="results">
-                    <!-- <img id="photo"> -->
+                <div>
+                    <img id="results">
                     <form id="upload-form" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
-                        <!-- {{ form.file }} -->
                         <input type="hidden" name="arquivo" id="arquivo">
                     </form>
                 </div>
@@ -64,32 +59,36 @@
         </div>
     </section>
 
-    <!-- <script type="text/javascript" src="{% static 'js/capture-image.js' %}"></script> -->
     <script type="text/javascript" src="{% static 'js/webcam.js' %}"></script>
     <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
 
     <script>
-        Webcam.set({
-            width: 400,
-            height: 300,
-            image_format: 'jpeg',
-            jpeg_quality: 90
-        });
-        Webcam.attach('#camera');
+        var data = ''
+        function startCamera(){
+            Webcam.set({
+                width: 400,
+                height: 300,
+                image_format: 'jpeg',
+                jpeg_quality: 90
+            });
+            Webcam.attach('#camera');
+        }
 
         function take_snapshot(){
-
             Webcam.snap(function(data_uri){
-                //document.getElementById('results').innerHTML = '<img id="imageprev" src="'+data_uri+'"/>';
-
-                var raw_image_data = data_uri.replace(/^data\:image\/\w+\;base64\,/, '');
-
-                document.getElementById('arquivo').value = raw_image_data;
-                document.getElementById('upload-form').submit();
-
+                document.getElementById('results').src = data_uri;
+                data = data_uri
             });
+        }
 
-            //Webcam.reset();
+        function upload(){
+            var raw_image_data = data.replace(/^data\:image\/\w+\;base64\,/, '');
+            document.getElementById('arquivo').value = raw_image_data;
+            document.getElementById('upload-form').submit();
+        }
+
+        function stopCamera(){
+            Webcam.reset();
         }
     </script>
 

@@ -6,7 +6,6 @@ from .import_file import excel_read, save_data
 import pandas as pd
 import os
 import base64
-#from django.views.decorators.csrf import csrf_protect
 # Create your views here.
 
 #Alunos ↓
@@ -83,16 +82,11 @@ def dataStudent(request, pk):
     return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
 
 
-#@csrf_protect
 def imageInstant(request, pk):
-
-    #print(request.POST)
     if request.POST:
 
         code_str = request.POST['arquivo']
         code_str = base64.b64decode(code_str)
-
-        #print(code_str)
 
         obj_student = Student.objects.get(id=pk)
 
@@ -102,10 +96,6 @@ def imageInstant(request, pk):
         with open(filename, 'wb') as f:
             f.write(code_str)
     
-
-     
-    #form = ImageStudentForm()
-
     return render(request, 'photoStudent.html')
 
 
