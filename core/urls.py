@@ -10,10 +10,13 @@ urlpatterns = [
     path('data/<int:pk>/', views.dataStudent, name='data-student'),
     path('data/<int:pk>/instant/image/', views.imageInstant, name='image-instant'),
     path('', views.loginMatriculationStudent, name='login-matriculation'),
+    path('anamnese/', views.enterAnamneses, name='anamneses'),
     path('anamnese/listar/', views.listAnamneses, name='list-anamneses'),
-    path('anamnese/detalhar<int:pk>/', views.showAnamnese, name='show-anamnese'),
+    path('anamnese/detalhar/<int:pk>/', views.showAnamnese, name='show-anamnese'),
     path('anamnese/cadastrar/', views.registerAnamnese, name='register-anamnese'),
+    path('anamnese/cadastrar/student/<int:student>', views.registerAnamneseStudent, name='register-anamnese-student'),
     path('anamnese/excluir<int:pk>/', views.deleteAnamnese, name='delete-anamnese'),
+    path('entrada', views.enterCampi, name='enter-campi'),
 ]
 
 

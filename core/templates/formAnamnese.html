@@ -13,7 +13,7 @@
     <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
 </head>
 <body class="center-align">
-    
+
     <section>
         <h4>Formulário COVID-19</h4>
         <p style="font-size: 20px;">Atenção! Preencha todos os campos corretamente e com sinceridade do formulário abaixo.</p>
@@ -21,6 +21,10 @@
             <div class="z-depth-3" style="display: inline-block; padding: 10px 10px 0px 10px; background-color: white; border-radius: 15px;">
                 <form method="POST" class="left-align">
                     {% csrf_token %}
+                    <p> <label> <span>Nome: {{student.name}}</span> </label> </p>
+                    <p> <label> <span>Matricula: {{student.matriculation}}</span> </label> </p>
+
+
                     <p>
                         <label for="id_fever">
                             {{ form.fever }}
@@ -99,6 +103,10 @@
                             <label for="textarea1">Outros sintomas:</label>
                         </div>
                     </div>
+                            {{ form.student }}
+
+                    </div>
+
                     <div>
                         <a href="{% url 'list-anamneses' %}" class="btn"> Voltar</a>
                         <button type="submit" class="btn white-text"> Cadastrar </button>

@@ -8,13 +8,13 @@ class DataExcelForm(forms.Form):
     )
 
 class ImageStudentForm(forms.Form):
-    
+
     file = forms.FileField(widget=forms.TextInput(
         attrs={'type': 'file', 'accept': 'image/*'})
     )
 
 class MatriculationStudent(forms.Form):
-    
+
     matriculation = forms.CharField(max_length=14, widget=forms.TextInput(
         attrs={'placeholder': 'Digite sua matrícula...'})
     )
@@ -22,8 +22,8 @@ class MatriculationStudent(forms.Form):
 class AnamneseForm(forms.ModelForm):
     class Meta:
         model = Anamnese
-        fields = ['fever', 'fatigue', 'dry_cough', 'body_ache', 'nasal_congestion', 'headache', 'shortness_of_breathe', 'conjunctivitis', 
-        'sore_throat' , 'diarrhea', 'loss_of_taste_or_smell', 'rash_or_discoloration', 'other_symptons']
+        fields = ['fever', 'fatigue', 'dry_cough', 'body_ache', 'nasal_congestion', 'headache', 'shortness_of_breathe', 'conjunctivitis',
+        'sore_throat' , 'diarrhea', 'loss_of_taste_or_smell', 'rash_or_discoloration', 'other_symptons', 'student',]
 
         widgets = {
             'fever': forms.TextInput(attrs={'type': 'checkbox'}),
@@ -39,4 +39,7 @@ class AnamneseForm(forms.ModelForm):
             'loss_of_taste_or_smell': forms.TextInput(attrs={'type': 'checkbox'}),
             'rash_or_discoloration': forms.TextInput(attrs={'type': 'checkbox'}),
             'other_symptons': forms.Textarea(attrs={'class': 'materialize-textarea'}),
+            'student': forms.HiddenInput(),
+
+
         }
