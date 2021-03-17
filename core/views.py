@@ -6,6 +6,7 @@ from .import_file import excel_read, save_data
 import pandas as pd
 import os
 import base64
+from django.http import HttpResponse
 # Create your views here.
 
 #Alunos ↓
@@ -21,7 +22,7 @@ def listStudents(request):
 def importFile(request):
     if request.method == 'POST' and len(request.FILES) != 0:
         form = DataExcelForm(request.FILES)
-        
+
         if form.is_valid():
             file = request.FILES['file']
             fs = FileSystemStorage()
@@ -48,7 +49,21 @@ def loginMatriculationStudent(request):
         form = MatriculationStudent()
 
     return render(request, 'loginMatriculation.html', {'form': form})
-    
+
+
+def enterAnamneses(request):
+    if request.method == 'POST':
+        form = MatriculationStudent(request.POST)
+
+        if form.is_valid():
+            if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
+                return redirect('register-anamnese-student', student=request.POST['matriculation'])
+
+    else:
+        form = MatriculationStudent()
+
+    return render(request, 'anamnese.html', {'form': form})
+
 
 def dataStudent(request, pk):
 
@@ -63,7 +78,7 @@ def dataStudent(request, pk):
             filename, fileextension = os.path.splitext(file.name)
 
             file.name = f'user_{pk}{fileextension}'
-            
+
             student.photo = file
             student.save()
 
@@ -98,7 +113,7 @@ def imageInstant(request, pk):
             f.write(code_str)
 
         return redirect('data-student', pk=obj_student.pk)
-    
+
     return render(request, 'photoStudent.html')
 
 
@@ -112,15 +127,35 @@ def showAnamnese(request, pk):
     return render(request, 'showAnamnese.html', {"anamnese":anamnese})
 
 def registerAnamnese(request):
+    #form = AnamneseForm()
+    #if request.method == 'POST':
+    #    form = AnamneseForm(request.POST)
+    #    if form.is_valid():
+    #        form.save()
+    #        return redirect('list-anamneses')
+    return  redirect('anamneses')#render(request, 'formAnamnese.html', {'form': form})
+
+def registerAnamneseStudent(request,student):
     form = AnamneseForm()
     if request.method == 'POST':
         form = AnamneseForm(request.POST)
         if form.is_valid():
             form.save()
             return redirect('list-anamneses')
-    return render(request, 'formAnamnese.html', {'form': form})
+    else:
+        a = Anamnese()
+        a.student = Student.objects.get(matriculation=student)
+        form = AnamneseForm(instance = a)
+        return render(request, 'formAnamnese.html', {'form': form, 'student':a.student})
+
 
 def deleteAnamnese(request, pk):
     anamnese = get_object_or_404(Anamnese, pk=pk)
     anamnese.delete()
     return redirect('list-anamneses')
+
+#função que recebe um json
+def enterCampi(request):
+    print(request.GET)
+    #aqui para gerar o objeto entrada e salvar
+    return HttpResponse("Sucesso olá max")

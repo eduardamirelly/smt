@@ -5,7 +5,7 @@ from django.db import models
 class Student(models.Model):
     name = models.CharField('Nome do Aluno', max_length=100)
     matriculation = models.CharField('Matrícula', max_length=14, unique=True)
-    
+
     CAMPUS_CHOICES = [
         ('CA', 'CA')
     ]
@@ -35,7 +35,7 @@ class Student(models.Model):
     ]
     shift = models.CharField("Turno", max_length=10, choices=SHIFT_CHOICES)
 
-    photo = models.ImageField(upload_to='students/', blank=True)
+    photo = models.ImageField(upload_to='students/', blank=True) #Chave estrangeira
 
     def __str__(self):
         return self.name
@@ -44,6 +44,7 @@ class Student(models.Model):
 class PhonesStudent(models.Model):
     student = models.ForeignKey(Student, on_delete=models.RESTRICT)
     phone = models.CharField('Telefone', max_length=12)
+    #campo principal
 
     def __str__(self):
         return self.phone
@@ -63,11 +64,13 @@ class Anamnese(models.Model):
     rash_or_discoloration = models.BooleanField("Erupção cutânea ou descoloração da pele")
     other_symptons = models.TextField("Outros sintomas", default="Nenhum")
 
-    registration = models.CharField("Matrícula", max_length=14, default="00000000000000")
-    # student = models.ForeignKey(Student, on_delete=models.RESTRICT)
+    #registration = models.CharField("Matrícula", max_length=14, default="00000000000000")
+    student = models.ForeignKey(Student, on_delete=models.DO_NOTHING,blank=True,null=True)
     datetime = models.DateTimeField(auto_now_add=True)
     attendance_authorization = models.BooleanField(default=True)
 
+
+
 class Entrada(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    datetime = models.DateTimeField(auto_now_add=True)
+    dtenter = models.DateTimeField(auto_now_add=True)
