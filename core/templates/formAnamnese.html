@@ -1,20 +1,8 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Cadastrar Anamnese | IFRN</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body class="center-align">
+{% block content %}
 
-    <section>
+    <section class="center-align">
         <h4>Formulário COVID-19</h4>
         <p style="font-size: 20px;">Atenção! Preencha todos os campos corretamente e com sinceridade do formulário abaixo.</p>
         <div class="container">
@@ -116,7 +104,4 @@
         </div>
     </section>
 
-    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-
-</body>
-</html>
+{% endblock %}
