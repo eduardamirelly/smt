@@ -12,7 +12,6 @@
                     <p> <label> <span>Nome: {{student.name}}</span> </label> </p>
                     <p> <label> <span>Matricula: {{student.matriculation}}</span> </label> </p>
 
-
                     <p>
                         <label for="id_fever">
                             {{ form.fever }}
@@ -90,15 +89,15 @@
                             {{ form.other_symptons }}
                             <label for="textarea1">Outros sintomas:</label>
                         </div>
-                    </div>
+                    <div>
                             {{ form.student }}
-
                     </div>
 
                     <div>
-                        <a href="{% url 'list-anamneses' %}" class="btn"> Voltar</a>
+                        <a href="#" class="btn"> Voltar</a>
                         <button type="submit" class="btn white-text"> Cadastrar </button>
                     </div>
+
                 </form>
             </div>
         </div>

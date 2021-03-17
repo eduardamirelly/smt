@@ -81,42 +81,10 @@ def imageInstant(request, student):
 
         with open(filename, 'wb') as f:
             f.write(code_str)
-            
+
         return redirect('data-student', student=obj_student.matriculation)
 
     return render(request, 'photoStudent.html')
-
-
-def enterAnamneses(request):
-    if request.method == 'POST':
-        form = MatriculationStudent(request.POST)
-        if form.is_valid():
-            if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
-                return redirect('register-anamnese-student', student=request.POST['matriculation'])
-    else:
-        form = MatriculationStudent()
-
-    return render(request, 'anamnese.html', {'form': form})
-
-
-def listAnamneses(request):
-    anamneses = Anamnese.objects.all()
-    return render(request, 'listAnamnese.html', {'anamneses':anamneses})
-
-
-def showAnamnese(request, pk):
-    anamnese = get_object_or_404(Anamnese, pk=pk)
-    return render(request, 'showAnamnese.html', {"anamnese":anamnese})
-
-
-def registerAnamnese(request):
-    #form = AnamneseForm()
-    #if request.method == 'POST':
-    #    form = AnamneseForm(request.POST)
-    #    if form.is_valid():
-    #        form.save()
-    #        return redirect('list-anamneses')
-    return redirect('anamnese')#render(request, 'formAnamnese.html', {'form': form})
 
 
 def registerAnamneseStudent(request, student):
@@ -133,6 +101,16 @@ def registerAnamneseStudent(request, student):
         return render(request, 'formAnamnese.html', {'form': form, 'student':a.student})
 
 
+def listAnamneses(request):
+    anamneses = Anamnese.objects.all()
+    return render(request, 'listAnamnese.html', {'anamneses':anamneses})
+
+
+def showAnamnese(request, pk):
+    anamnese = get_object_or_404(Anamnese, pk=pk)
+    return render(request, 'showAnamnese.html', {"anamnese":anamnese})
+
+
 def deleteAnamnese(request, pk):
     anamnese = get_object_or_404(Anamnese, pk=pk)
     anamnese.delete()
@@ -144,4 +122,3 @@ def enterCampi(request):
     print(request.GET)
     #aqui para gerar o objeto entrada e salvar
     return HttpResponse("Sucesso olá max")
-

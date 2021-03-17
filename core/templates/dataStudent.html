@@ -82,7 +82,7 @@
                                 <a class="btn btn-large" href="instant/image/">Tirar Foto</a>
                             </div>
                         </form>
-                        
+
                         {% endif %}
                         {% if data_student.photo %}
                             <img width="400" src="{{ data_student.photo.url }}">
@@ -93,10 +93,7 @@
                     <div class="sec-h4 col s6 center">
                         <h4>Anamneses Student</h4>
                         <div>
-                            <a href="{% url 'anamnese' %}">Cadastrar anamnese</a>
-                        </div>
-                        <div>
-                            <a href="#">Ver anamneses cadastradas</a>
+                            <a href="{% url 'list-anamneses' %}">Ver anamneses cadastradas</a>
                         </div>
                     </div>
                 </div>
