@@ -50,21 +50,6 @@ def loginMatriculationStudent(request):
 
     return render(request, 'loginMatriculation.html', {'form': form})
 
-
-def enterAnamneses(request):
-    if request.method == 'POST':
-        form = MatriculationStudent(request.POST)
-
-        if form.is_valid():
-            if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
-                return redirect('register-anamnese-student', student=request.POST['matriculation'])
-
-    else:
-        form = MatriculationStudent()
-
-    return render(request, 'anamnese.html', {'form': form})
-
-
 def dataStudent(request, pk):
 
     if request.method == 'POST' and len(request.FILES) != 0:
@@ -93,7 +78,6 @@ def dataStudent(request, pk):
         if p.student.pk == pk:
             phones.append(p.phone)
 
-
     return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
 
 
@@ -118,6 +102,19 @@ def imageInstant(request, pk):
 
 
 #Anamnese ↓
+def enterAnamneses(request):
+    if request.method == 'POST':
+        form = MatriculationStudent(request.POST)
+
+        if form.is_valid():
+            if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
+                return redirect('register-anamnese-student', student=request.POST['matriculation'])
+
+    else:
+        form = MatriculationStudent()
+
+    return render(request, 'anamnese.html', {'form': form})
+
 def listAnamneses(request):
     anamneses = Anamnese.objects.all()
     return render(request, 'listAnamnese.html', {'anamneses':anamneses})
@@ -133,7 +130,7 @@ def registerAnamnese(request):
     #    if form.is_valid():
     #        form.save()
     #        return redirect('list-anamneses')
-    return  redirect('anamneses')#render(request, 'formAnamnese.html', {'form': form})
+    return redirect('anamnese')#render(request, 'formAnamnese.html', {'form': form})
 
 def registerAnamneseStudent(request,student):
     form = AnamneseForm()
