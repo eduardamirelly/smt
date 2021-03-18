@@ -5,7 +5,7 @@ from .forms import DataExcelForm, MatriculationStudent, AnamneseForm, ImageStude
 from .models import Student, PhonesStudent, Anamnese
 from .import_file import excel_read, save_data
 import pandas as pd
-import os, base64
+import os, base64, datetime
 
 # Create your views here.
 
@@ -51,16 +51,19 @@ def dataStudent(request, student):
     if request.method == 'POST' and len(request.FILES) != 0:
         form = ImageStudentForm(request.FILES)
         if form.is_valid():
-            student = Student.objects.get(matriculation=student)
+            obj_student = Student.objects.get(matriculation=student)
             file = request.FILES['file']
             filename, fileextension = os.path.splitext(file.name)
-            file.name = f'user_{pk}{fileextension}'
-            student.photo = file
-            student.save()
+
+            dt = datetime.datetime.now()
+            file.name = f'{obj_student.matriculation}_{dt.strftime("%Y-%m-%d_%Hh%Mm%Ss")}{fileextension}'
+            
+            obj_student.profile_picture = file
+            obj_student.save()
     else:
         form = ImageStudentForm()
 
-    data_student = Student.objects.get(matriculation=student)
+    data_student = Student.objects.get(matriculation=student) 
     phones_objs = PhonesStudent.objects.all()
     phones = []
 
@@ -78,7 +81,9 @@ def imageInstant(request, student):
         code_str = request.POST['file']
         code_str = base64.b64decode(code_str)
         obj_student = Student.objects.get(matriculation=student)
-        filename = f'core/media/students/{obj_student.matriculation}.jpg'
+
+        dt = datetime.datetime.now()
+        filename = f'core/media/students/{obj_student.matriculation}_{dt.strftime("%Y-%m-%d_%Hh%Mm%Ss")}.jpg'
         os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         with open(filename, 'wb') as f:

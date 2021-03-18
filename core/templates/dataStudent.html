@@ -65,7 +65,7 @@
                 <div>
                     <div class="sec-h4 col s6 center">
                         <h4>Imagem</h4>
-                        {% if not data_student.photo %}
+                        {% if not data_student.profile_picture %}
                         <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="form-file">
@@ -86,8 +86,8 @@
                         </form>
 
                         {% endif %}
-                        {% if data_student.photo %}
-                            <img width="400" src="{{ data_student.photo.url }}">
+                        {% if data_student.profile_picture %}
+                            <img width="400" src="{{ data_student.profile_picture.url }}">
                         {% endif %}
                     </div>
                 </div>
