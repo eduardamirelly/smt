@@ -100,7 +100,21 @@ table th{
     height: 45px;
 }
 
+#video {
+    width: 400px;
+    height: 300px;
+    background-color: #666;
+}
 
+#canvas{
+    display: none;
+}
+
+#photo{
+    background-color: #242424;
+    width: 400px;
+    height: 300px;
+}
 
 @media screen and (max-width: 700px){
     .title-h2 h2{

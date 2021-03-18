@@ -1,19 +1,7 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title> Listar Anamneses </title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
+{% block content %}
+
     <table style="margin-bottom: 8px;">
         <thead>
             <tr>
@@ -27,20 +15,18 @@
         <tbody>
             {% for form in anamneses %}
                 <tr>
-                    <td> <a href="{% url 'show-anamnese' pk=form.id %}"> {{ form.id }} </a> </td>
-                    <!-- <td>{{ form.aluno }}</td> -->
+                    <td> <a href="{% url 'show-anamnese' student=student.matriculation  pk=form.id %}"> {{ form.id }} </a> </td>
+                    <td>{{ form.student.matriculation }}</td>
                     <td>{{ form.attendance_authorization }}</td>
                     <td>{{ form.datetime }}</td>
-                    <td> <a href="{% url 'delete-anamnese' pk=form.id %}"> 
+                    <td> <a href="{% url 'delete-anamnese' student=student.matriculation pk=form.id %}"> 
                         <i class="material-icons"> delete </i> </a> </td>
                 </tr>
             {% endfor %}
         </tbody>
     </table>
     <div class="center-align">
-        <a href="{% url 'register-anamnese' %}" class="btn"> Cadastrar </a>
+        <a href="{% url 'register-anamnese' student=student.matriculation %}" class="btn"> Cadastrar </a>
     </div>
 
-    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-</body>
-</html>
+{% endblock %}

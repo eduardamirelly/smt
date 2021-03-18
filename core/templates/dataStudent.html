@@ -1,19 +1,6 @@
-{% load static %}
+{% extends 'base.html' %}
 
-<!DOCTYPE html>
-<html>
-<head>
-    <meta charset="utf-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <title>Dados do Estudante | IFRN</title>
-    <meta name="description" content="">
-    <meta name="viewport" content="width=device-width, initial-scale=1">
-    <link rel="stylesheet" href="{% static 'css/materialize.css' %}">
-    <link rel="stylesheet" href="{% static 'css/custom.css' %}">
-    <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
-    <link href="https://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet">
-</head>
-<body>
+{% block content %}
 
     <section>
         <div class="container">
@@ -102,11 +89,16 @@
                         {% endif %}
                     </div>
                 </div>
+                <div>
+                    <div class="sec-h4 col s6 center">
+                        <h4>Anamneses Student</h4>
+                        <div>
+                            <a href="anamnese/list/">Ver anamneses cadastradas</a>
+                        </div>
+                    </div>
+                </div>
             </div>
         </div>
     </section>
 
-    <script type="text/javascript" src="{% static 'js/materialize.min.js' %}"></script>
-
-</body>
-</html>
+{% endblock %}
