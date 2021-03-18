@@ -93,7 +93,7 @@ def registerAnamneseStudent(request, student):
         form = AnamneseForm(request.POST)
         if form.is_valid():
             form.save()
-            return redirect('list-anamneses')
+            return redirect('list-anamneses', student=student)
     else:
         a = Anamnese()
         a.student = Student.objects.get(matriculation=student)
@@ -101,20 +101,29 @@ def registerAnamneseStudent(request, student):
         return render(request, 'formAnamnese.html', {'form': form, 'student':a.student})
 
 
-def listAnamneses(request):
+def listAnamneses(request, student):
+    anamneses_student = []
     anamneses = Anamnese.objects.all()
-    return render(request, 'listAnamnese.html', {'anamneses':anamneses})
+
+    for a in anamneses:
+        if a.student.matriculation == student:
+            anamneses_student.append(a)
+
+    obj_student = Student.objects.get(matriculation=student)
+
+    return render(request, 'listAnamnese.html', {'anamneses': anamneses_student, 'student': obj_student})
 
 
-def showAnamnese(request, pk):
+def showAnamnese(request, student, pk):
     anamnese = get_object_or_404(Anamnese, pk=pk)
-    return render(request, 'showAnamnese.html', {"anamnese":anamnese})
+    student = get_object_or_404(Student, matriculation=student)
+    return render(request, 'showAnamnese.html', {'anamnese': anamnese, 'student': student})
 
 
-def deleteAnamnese(request, pk):
+def deleteAnamnese(request, student, pk):
     anamnese = get_object_or_404(Anamnese, pk=pk)
     anamnese.delete()
-    return redirect('list-anamneses')
+    return redirect('list-anamneses', student=student)
 
 
 #função que recebe um json

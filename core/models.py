@@ -49,6 +49,7 @@ class PhonesStudent(models.Model):
     def __str__(self):
         return self.phone
 
+
 class Anamnese(models.Model):
     fever = models.BooleanField("Febre")
     fatigue = models.BooleanField("Cansaço")
@@ -63,13 +64,13 @@ class Anamnese(models.Model):
     loss_of_taste_or_smell = models.BooleanField("Perda do olfato ou paladar")
     rash_or_discoloration = models.BooleanField("Erupção cutânea ou descoloração da pele")
     other_symptons = models.TextField("Outros sintomas", default="Nenhum")
-
-    #registration = models.CharField("Matrícula", max_length=14, default="00000000000000")
     student = models.ForeignKey(Student, on_delete=models.DO_NOTHING,blank=True,null=True)
     datetime = models.DateTimeField(auto_now_add=True)
     attendance_authorization = models.BooleanField(default=True)
 
-
+    def __str__(self):
+        return self.student.name + f'  - Anamnese({self.id})'
+    
 
 class Entrada(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
