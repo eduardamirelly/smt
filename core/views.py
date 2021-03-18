@@ -72,7 +72,9 @@ def dataStudent(request, student):
 
 
 def imageInstant(request, student):
-    if request.POST:
+
+    if request.method == 'POST':
+
         code_str = request.POST['file']
         code_str = base64.b64decode(code_str)
         obj_student = Student.objects.get(matriculation=student)
