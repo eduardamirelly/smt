@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
 from django.core.files.storage import FileSystemStorage
+from django.core.files.images import ImageFile
 from django.http import HttpResponse
 from .forms import DataExcelForm, MatriculationStudent, AnamneseForm, ImageStudentForm
-from .models import Student, PhonesStudent, Anamnese
+from .models import Student, PhonesStudent, Anamnese, ImageFaceStudent
 from .import_file import excel_read, save_data
 import pandas as pd
-import os, base64, datetime
+import os, base64, datetime, io
 
 # Create your views here.
 
@@ -71,7 +72,15 @@ def dataStudent(request, student):
         if p.student.pk == data_student.pk:
             phones.append(p.phone)
 
-    return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
+    img_objs = ImageFaceStudent.objects.all()
+    imgs_student = []
+
+    for i in img_objs:
+        if i.student.pk == data_student.pk:
+            imgs_student.append(i)
+
+
+    return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'imgs_student': imgs_student, 'form': form})
 
 
 def imageInstant(request, student):
@@ -80,14 +89,20 @@ def imageInstant(request, student):
 
         code_str = request.POST['file']
         code_str = base64.b64decode(code_str)
+        
         obj_student = Student.objects.get(matriculation=student)
 
         dt = datetime.datetime.now()
-        filename = f'core/media/students/{obj_student.matriculation}_{dt.strftime("%Y-%m-%d_%Hh%Mm%Ss")}.jpg'
-        os.makedirs(os.path.dirname(filename), exist_ok=True)
+        filename = f'{obj_student.matriculation}_{dt.strftime("%Y-%m-%d_%Hh%Mm%Ss")}.jpg'
+        #os.makedirs(os.path.dirname(filename), exist_ok=True)
 
-        with open(filename, 'wb') as f:
-            f.write(code_str)
+        img_new = ImageFaceStudent()
+        img_new.student = obj_student
+        img = ImageFile(io.BytesIO(code_str), name=filename)
+        img_new.image = img
+        img_new.save()
+
+        
 
         return redirect('data-student', student=obj_student.matriculation)
 

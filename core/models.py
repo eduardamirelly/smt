@@ -35,7 +35,7 @@ class Student(models.Model):
     ]
     shift = models.CharField("Turno", max_length=10, choices=SHIFT_CHOICES)
 
-    profile_picture = models.ImageField(upload_to=f'students/', blank=True)
+    profile_picture = models.ImageField(upload_to='students/', blank=True)
 
     def __str__(self):
         return self.name
@@ -51,11 +51,11 @@ class PhonesStudent(models.Model):
 
 class ImageFaceStudent(models.Model):
     student = models.ForeignKey(Student, on_delete=models.RESTRICT)
-    image = models.ImageField()
-    time_add = models.DateTimeField()
+    image = models.ImageField(upload_to='students/')
+    time_add = models.DateTimeField(auto_now_add=True)
 
     def __str__(self):
-        return self.student.matriculation + '  -  ' + self.time_add
+        return f'{self.student.matriculation} - {self.time_add}'
 
 
 class Anamnese(models.Model):

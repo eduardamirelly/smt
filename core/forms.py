@@ -13,7 +13,7 @@ class ImageStudentForm(forms.Form):
     file = forms.FileField(widget=forms.TextInput(
         attrs={'type': 'file', 'accept': 'image/*'})
     )
-    
+
 
 class MatriculationStudent(forms.Form):
 

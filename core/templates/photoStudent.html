@@ -14,7 +14,6 @@
                     <button type="button" onclick="startCamera()">Abrir Camera</button>
                     <button type="button" onclick="stopCamera()">Fechar Camera</button>
                     <button type="button" id="button-take-picture" onclick="take_snapshot()">Tirar Foto</button>
-                    <button type="button" onclick="upload()">Enviar</button>
                 </div>
                 <div>
                     <canvas id="canvas"></canvas>
@@ -24,6 +23,7 @@
                     <form id="upload-form" method="POST" enctype="multipart/form-data">
                         {% csrf_token %}
                         <input type="hidden" name="file" id="file">
+                        <button type="submit" onclick="upload()">Enviar</button>
                     </form>
                 </div>
             </div>
@@ -33,7 +33,7 @@
     <script type="text/javascript" src="{% static 'js/webcam.js' %}"></script>
 
     <script>
-        var data = ''
+        var data_img = ''
 
         function startCamera(){
             Webcam.set({
@@ -48,12 +48,12 @@
         function take_snapshot(){
             Webcam.snap(function(data_uri){
                 document.getElementById('preview').src = data_uri;
-                data = data_uri;
+                data_img = data_uri;
             });
         }
 
         function upload(){
-            var raw_image_data = data.replace(/^data\:image\/\w+\;base64\,/, '');
+            var raw_image_data = data_img.replace(/^data\:image\/\w+\;base64\,/, '');
             document.getElementById('file').value = raw_image_data;
             document.getElementById('upload-form').submit();
         }

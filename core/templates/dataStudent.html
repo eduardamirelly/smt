@@ -89,6 +89,9 @@
                         {% if data_student.profile_picture %}
                             <img width="400" src="{{ data_student.profile_picture.url }}">
                         {% endif %}
+                        {% for img in imgs_student %}
+                            <img width="400" src="{{ img.image.url }}">
+                        {% endfor %}
                     </div>
                 </div>
                 <div>
