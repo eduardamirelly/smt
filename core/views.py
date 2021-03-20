@@ -59,6 +59,10 @@ def dataStudent(request, student):
             dt = datetime.datetime.now()
             file.name = f'{obj_student.matriculation}_{dt.strftime("%Y-%m-%d_%Hh%Mm%Ss")}{fileextension}'
             
+            if obj_student.profile_picture.name != '':
+                if default_storage.exists(obj_student.profile_picture.name):
+                    default_storage.delete(obj_student.profile_picture.name)
+            
             obj_student.profile_picture = file
             obj_student.save()
     else:
