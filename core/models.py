@@ -51,6 +51,7 @@ class PhonesStudent(models.Model):
 
 class ImageFaceStudent(models.Model):
     student = models.ForeignKey(Student, on_delete=models.RESTRICT)
+    filename = models.CharField('Filename', max_length=35, blank=True)
     image = models.ImageField(upload_to='students/')
     time_add = models.DateTimeField(auto_now_add=True)
 

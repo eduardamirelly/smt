@@ -10,6 +10,7 @@ urlpatterns = [
     path('list/students/', views.listStudents, name='list-students'),
     path('student/<str:student>/', views.dataStudent, name='data-student'),
     path('student/<str:student>/instant/image/', views.imageInstant, name='image-instant'),
+    path('student/<str:student>/delete/image/<int:pk>', views.deleteImageInstant, name='delete-image'),
     path('student/<str:student>/anamnese/list/', views.listAnamneses, name='list-anamneses'),
     path('student/<str:student>/anamnese/list/<int:pk>/', views.showAnamnese, name='show-anamnese'),
     path('student/<str:student>/anamnese/register/', views.registerAnamneseStudent, name='register-anamnese'),

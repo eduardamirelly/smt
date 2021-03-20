@@ -1,5 +1,5 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.files.storage import FileSystemStorage
+from django.core.files.storage import FileSystemStorage, default_storage
 from django.core.files.images import ImageFile
 from django.http import HttpResponse
 from .forms import DataExcelForm, MatriculationStudent, AnamneseForm, ImageStudentForm
@@ -79,14 +79,11 @@ def dataStudent(request, student):
         if i.student.pk == data_student.pk:
             imgs_student.append(i)
 
-
     return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'imgs_student': imgs_student, 'form': form})
 
 
 def imageInstant(request, student):
-
     if request.method == 'POST':
-
         code_str = request.POST['file']
         code_str = base64.b64decode(code_str)
         
@@ -94,19 +91,28 @@ def imageInstant(request, student):
 
         dt = datetime.datetime.now()
         filename = f'{obj_student.matriculation}_{dt.strftime("%Y-%m-%d_%Hh%Mm%Ss")}.jpg'
-        #os.makedirs(os.path.dirname(filename), exist_ok=True)
 
         img_new = ImageFaceStudent()
         img_new.student = obj_student
         img = ImageFile(io.BytesIO(code_str), name=filename)
+        img_new.filename = filename
         img_new.image = img
         img_new.save()
-
-        
 
         return redirect('data-student', student=obj_student.matriculation)
 
     return render(request, 'photoStudent.html')
+
+
+def deleteImageInstant(request, student, pk):
+    img = get_object_or_404(ImageFaceStudent, pk=pk)
+    
+    if default_storage.exists(f'students/{img.filename}'):
+        default_storage.delete(f'students/{img.filename}')
+
+    img.delete()
+    
+    return redirect('data-student', student=student)
 
 
 def registerAnamneseStudent(request, student):

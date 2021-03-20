@@ -91,6 +91,7 @@
                         {% endif %}
                         {% for img in imgs_student %}
                             <img width="400" src="{{ img.image.url }}">
+                            <a href="{% url 'delete-image' student=data_student.matriculation pk=img.pk %}">Delete</a>
                         {% endfor %}
                     </div>
                 </div>
