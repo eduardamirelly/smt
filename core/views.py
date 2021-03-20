@@ -1,11 +1,12 @@
 from django.shortcuts import render, redirect, get_object_or_404
-from django.core.files.storage import FileSystemStorage
+from django.core.files.storage import FileSystemStorage, default_storage
+from django.core.files.images import ImageFile
 from django.http import HttpResponse
 from .forms import DataExcelForm, MatriculationStudent, AnamneseForm, ImageStudentForm
-from .models import Student, PhonesStudent, Anamnese
+from .models import Student, PhonesStudent, Anamnese, ImageFaceStudent
 from .import_file import excel_read, save_data
 import pandas as pd
-import os, base64
+import os, base64, datetime, io
 
 # Create your views here.
 
@@ -51,16 +52,23 @@ def dataStudent(request, student):
     if request.method == 'POST' and len(request.FILES) != 0:
         form = ImageStudentForm(request.FILES)
         if form.is_valid():
-            student = Student.objects.get(matriculation=student)
+            obj_student = Student.objects.get(matriculation=student)
             file = request.FILES['file']
             filename, fileextension = os.path.splitext(file.name)
-            file.name = f'user_{pk}{fileextension}'
-            student.photo = file
-            student.save()
+
+            dt = datetime.datetime.now()
+            file.name = f'{obj_student.matriculation}_{dt.strftime("%Y-%m-%d_%Hh%Mm%Ss")}{fileextension}'
+            
+            if obj_student.profile_picture.name != '':
+                if default_storage.exists(obj_student.profile_picture.name):
+                    default_storage.delete(obj_student.profile_picture.name)
+            
+            obj_student.profile_picture = file
+            obj_student.save()
     else:
         form = ImageStudentForm()
 
-    data_student = Student.objects.get(matriculation=student)
+    data_student = Student.objects.get(matriculation=student) 
     phones_objs = PhonesStudent.objects.all()
     phones = []
 
@@ -68,23 +76,47 @@ def dataStudent(request, student):
         if p.student.pk == data_student.pk:
             phones.append(p.phone)
 
-    return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'form': form})
+    img_objs = ImageFaceStudent.objects.all()
+    imgs_student = []
+
+    for i in img_objs:
+        if i.student.pk == data_student.pk:
+            imgs_student.append(i)
+
+    return render(request, 'dataStudent.html', {'data_student': data_student, 'phones': phones, 'imgs_student': imgs_student, 'form': form})
 
 
 def imageInstant(request, student):
-    if request.POST:
+    if request.method == 'POST':
         code_str = request.POST['file']
         code_str = base64.b64decode(code_str)
+        
         obj_student = Student.objects.get(matriculation=student)
-        filename = f'core/media/students/{obj_student.matriculation}.jpg'
-        os.makedirs(os.path.dirname(filename), exist_ok=True)
 
-        with open(filename, 'wb') as f:
-            f.write(code_str)
+        dt = datetime.datetime.now()
+        filename = f'{obj_student.matriculation}_{dt.strftime("%Y-%m-%d_%Hh%Mm%Ss")}.jpg'
+
+        img_new = ImageFaceStudent()
+        img_new.student = obj_student
+        img = ImageFile(io.BytesIO(code_str), name=filename)
+        img_new.filename = filename
+        img_new.image = img
+        img_new.save()
 
         return redirect('data-student', student=obj_student.matriculation)
 
     return render(request, 'photoStudent.html')
+
+
+def deleteImageInstant(request, student, pk):
+    img = get_object_or_404(ImageFaceStudent, pk=pk)
+    
+    if default_storage.exists(f'students/{img.filename}'):
+        default_storage.delete(f'students/{img.filename}')
+
+    img.delete()
+    
+    return redirect('data-student', student=student)
 
 
 def registerAnamneseStudent(request, student):

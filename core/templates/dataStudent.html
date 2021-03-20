@@ -1,5 +1,7 @@
 {% extends 'base.html' %}
 
+{% block title %} Dados do Estudante - IFRN {% endblock %}
+
 {% block content %}
 
     <section>
@@ -63,7 +65,6 @@
                 <div>
                     <div class="sec-h4 col s6 center">
                         <h4>Imagem</h4>
-                        {% if not data_student.photo %}
                         <form method="POST" enctype="multipart/form-data">
                             {% csrf_token %}
                             <div class="form-file">
@@ -79,14 +80,20 @@
                             </div>
                             <div class="div-submit-btn center">
                                 <button class="btn btn-upload" type="submit">Upload</button>
-                                <a class="btn btn-large" href="instant/image/">Tirar Foto</a>
                             </div>
                         </form>
 
+                        <div class="div-submit-btn center">
+                            <a class="btn btn-large" href="instant/image/">Tirar Foto</a>
+                        </div>
+
+                        {% if data_student.profile_picture %}
+                            <img width="400" src="{{ data_student.profile_picture.url }}">
                         {% endif %}
-                        {% if data_student.photo %}
-                            <img width="400" src="{{ data_student.photo.url }}">
-                        {% endif %}
+                        {% for img in imgs_student %}
+                            <img width="400" src="{{ img.image.url }}">
+                            <a href="{% url 'delete-image' student=data_student.matriculation pk=img.pk %}">Delete</a>
+                        {% endfor %}
                     </div>
                 </div>
                 <div>

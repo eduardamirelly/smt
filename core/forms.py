@@ -7,17 +7,20 @@ class DataExcelForm(forms.Form):
         attrs={'type': 'file', 'accept': 'application/vnd.ms-excel, application/vnd.openxmlformats-officedocument.spreadsheetml.sheet'})
     )
 
+
 class ImageStudentForm(forms.Form):
 
     file = forms.FileField(widget=forms.TextInput(
         attrs={'type': 'file', 'accept': 'image/*'})
     )
 
+
 class MatriculationStudent(forms.Form):
 
     matriculation = forms.CharField(max_length=14, widget=forms.TextInput(
         attrs={'placeholder': 'Digite sua matrícula...'})
     )
+
 
 class AnamneseForm(forms.ModelForm):
     class Meta:
@@ -40,6 +43,4 @@ class AnamneseForm(forms.ModelForm):
             'rash_or_discoloration': forms.TextInput(attrs={'type': 'checkbox'}),
             'other_symptons': forms.Textarea(attrs={'class': 'materialize-textarea'}),
             'student': forms.HiddenInput(),
-
-
         }
