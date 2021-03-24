@@ -17,8 +17,8 @@
         <tbody>
             {% for form in anamneses %}
                 <tr>
-                    <td> <a href="{% url 'show-anamnese' student=student.matriculation  pk=form.id %}"> {{ form.id }} </a> </td>
-                    <td>{{ form.student.matriculation }}</td>
+                    <td> <a href="{% url 'show-anamnese' student=student.matriculation  pk=form.id %}"> Anamnese {{ form.id }} </a> </td>
+                    <!-- <td>{{ form.student.matriculation }}</td> -->
                     <td>{{ form.attendance_authorization }}</td>
                     <td>{{ form.datetime }}</td>
                     <td> <a href="{% url 'delete-anamnese' student=student.matriculation pk=form.id %}"> 
@@ -28,6 +28,7 @@
         </tbody>
     </table>
     <div class="center-align">
+        <a href="{% url 'data-student' student=student.matriculation %}" class="btn"> Voltar </a>
         <a href="{% url 'register-anamnese' student=student.matriculation %}" class="btn"> Cadastrar </a>
     </div>
 

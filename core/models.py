@@ -74,7 +74,7 @@ class Anamnese(models.Model):
     rash_or_discoloration = models.BooleanField("Erupção cutânea ou descoloração da pele")
     other_symptons = models.TextField("Outros sintomas", default="Nenhum")
     student = models.ForeignKey(Student, on_delete=models.DO_NOTHING,blank=True,null=True)
-    datetime = models.DateTimeField(auto_now_add=True)
+    anamnese_datetime = models.DateTimeField(auto_now_add=True)
     attendance_authorization = models.BooleanField(default=True)
 
     def __str__(self):
