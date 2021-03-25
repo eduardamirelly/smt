@@ -1,7 +1,7 @@
 /* Medias Dashboard */
 
 @media (min-width: 1200px){
-    #sidenav{
+    #sidebar{
         width: 22%;
         height: 100%;
     }

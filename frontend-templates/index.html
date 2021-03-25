@@ -13,10 +13,11 @@
     <!-- Dashboard Student -->
     <section id="dashboard" class="row">
 
-        <!-- Sidenav -->
-        <div id="sidenav" class="col-xl-2 col-lg-3 d-flex flex-column justify-content-center">
+        <!-- Sidebar -->
+        <nav id="sidebar" class="col-xl-2 col-lg-3 d-flex flex-column justify-content-center">
             <div id="profile" class="d-flex flex-column align-items-center">
-                <img class="img-fluid" src="./assets/person.jpg" alt="profile-student">
+                <span><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Mudar foto"><img src="./assets/icons/camera-icon.svg" alt="camera-icon"></a></span>
+                <img id="img-profile" class="img-fluid" src="./assets/person.jpg" alt="profile-student">
                 <p>Name Student</p>
             </div>
             
@@ -32,16 +33,16 @@
             <div id="logout" class="align-self-start">
                 <a href="#">Sair<img src="./assets/icons/logout-icon.svg" alt="logout-icon"></a>
             </div>
-        </div>
-        <!-- End Sidenav -->
+        </nav>
+        <!-- End Sidebar -->
 
         <!-- Body Dashboard -->
         <div id="dashboard-body" class="col-xl-10 col-lg-9 d-flex flex-column align-items-center">
             <div id="breadcrumb" class="align-self-start">
                 <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                     <ol class="breadcrumb">
-                        <li class="breadcrumb-item"><a href="#">Home</a></li>
-                        <li class="breadcrumb-item active" aria-current="page">Library</li>
+                        <li class="breadcrumb-item"><a href="#">Início</a></li>
+                        <li class="breadcrumb-item active" aria-current="page">Dados do Estudante</li>
                     </ol>
                 </nav>
             </div>
