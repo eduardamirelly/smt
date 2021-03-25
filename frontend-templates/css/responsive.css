@@ -24,6 +24,9 @@
     }
 
     /* Dashboard Body */
+    #dashboard-body{
+        width: 100%;
+    }
     #dashboard-body #up-title{
         margin-bottom: 30px;
     }
@@ -116,5 +119,5 @@
     #dashboard-body #toggle{
         display: none;
     }
-    
 }
+
