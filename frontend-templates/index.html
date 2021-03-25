@@ -5,16 +5,46 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Document</title>
+    <!-- CSS MAIN -->
     <link rel="stylesheet" href="./css/main.css">
 </head>
 <body>
 
-    <section id="dashboard">
-
+    <!-- Dashboard Student -->
+    <section id="dashboard" class="row">
         
+        <!-- Sidenav -->
+        <div id="sidenav" class="col-xl-2 col-lg-3 d-flex flex-column justify-content-center">
+            <div id="profile" class="d-flex flex-column align-items-center">
+                <img class="img-fluid" src="./assets/person.jpg" alt="profile-student">
+                <p>Name Student</p>
+            </div>
+            
+            <div id="menu" class="d-flex justify-content-center">
+                <ul>
+                    <li><a href="#"><img src="./assets/icons/home-icon.svg" alt="home-icon">Início</a></li>
+                    <li><a href="#"><img src="./assets/icons/student-icon.svg" alt="student-icon">Dados do Estudante</a></li>
+                    <li><a href="#"><img src="./assets/icons/anamneses-icon.svg" alt="anamneses-icon">Anamneses</a></li>
+                    <li><a href="#"><img src="./assets/icons/images-icon.svg" alt="images-icon">Fotos Webcam</a></li>
+                </ul>
+            </div>
+
+            <div id="logout" class="align-self-start">
+                <a href="#">Sair<img src="./assets/icons/logout-icon.svg" alt="logout-icon"></a>
+            </div>
+        </div>
+        <!-- End Sidenav -->
+
+        <!-- Body Dashboard -->
+        <div class="dashboard-body col-xl-10 col-lg-9">
+
+        </div>
+        <!-- End Body Dashboard -->
 
     </section>
+    <!-- End Dashboard Student -->
     
+    <!-- BOOTSTRAP JS -->
     <script src="./js/bootstrap.min.js"></script>
 
 </body>

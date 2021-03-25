@@ -1,0 +1,9 @@
+/* Medias Dashboard */
+
+@media (min-width: 1200px){
+    #sidenav{
+        width: 22%;
+        height: 100%;
+    }
+}
+

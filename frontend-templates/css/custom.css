@@ -1,0 +1,69 @@
+/* Dashboard */
+
+#dashboard{
+    height: 100%;
+    margin: 0;
+}
+
+#sidenav{
+    background-color: var(--dark-green);
+}
+
+#sidenav #profile{
+    margin-bottom: 50px;
+}
+
+#sidenav #profile img{
+    border-radius: 100%;
+    height: 200px;
+    object-fit: cover;
+    width: 200px;  
+    background-color: var(--gray-white);
+}
+
+#sidenav #profile p{
+    font-weight: 300;
+    color: var(--gray-white);
+    margin-top: 20px;
+}
+
+#sidenav #menu{
+    font-weight: 400;
+}
+
+#sidenav #menu ul{
+    margin: 0;
+}
+
+#sidenav #menu ul li{
+    margin-bottom: 30px;
+}
+
+#sidenav #menu ul li a, #sidenav #logout a{
+    color: var(--gray-white);
+}
+
+#sidenav #menu ul li a img{
+    width: 20px;
+    margin-right: 10px;
+    margin-bottom: 5px;
+}
+
+#sidenav #logout{
+    margin-top: 80px;
+    margin-left: 20px;
+}
+
+#sidenav #logout a img{
+    width: 20px;
+    margin-left: 10px;
+    margin-bottom: 3px;
+}
+
+
+
+
+/* #dashboard-body{
+    width: 70%;
+} */
+
