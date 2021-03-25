@@ -7,7 +7,7 @@
 
 #sidebar{
     background-color: var(--dark-green);
-    padding: 30px 12px;
+    padding: 18px 12px;
 }
 
 #sidebar #profile{
@@ -57,6 +57,10 @@
     color: var(--gray-white);
 }
 
+#sidebar #menu ul li a:hover, #sidebar #logout a:hover{
+    text-decoration: underline;
+}
+
 #sidebar #menu ul li a img{
     width: 20px;
     margin-right: 10px;
@@ -74,12 +78,33 @@
     margin-bottom: 3px;
 }
 
-
 /* Dashboard Body */
 
-#dashboard-body #breadcrumb{
-    margin-top: 40px;
-    margin-left: 5vw;
+#dashboard-body #up-title{
+    margin: 40px 5vw 20px 5vw;
+}
+
+#dashboard-body #toggle{
+    display: none;
+}
+
+#dashboard-body #toggle button{
+    border: none;
+    background-color: var(--dark-green);
+    border-radius: 5px;
+    padding: 5px 10px;
+}
+
+#dashboard-body #toggle button img{
+    width: 20px;
+}
+
+#dashboard-body #toggle #button-close{
+    display: none;
+}
+
+#dashboard-body #breadcrumb nav ol{
+    margin: 0;
 }
 
 #dashboard-body #breadcrumb nav ol li{
@@ -96,3 +121,4 @@
 #dashboard-body #breadcrumb nav ol li a:hover{
     text-decoration: underline;
 }
+
