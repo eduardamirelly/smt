@@ -1,0 +1,13 @@
+/* Colors */
+
+:root{
+    --white: #FFFFFF; 
+    --gray-white: #F5F5F5;
+    --light-gray: #969696;
+    --medium-gray: #707070;
+    --dark-gray: #565656;
+    --darker-gray: #494949;
+    --dark-green: rgba(20, 92, 35, 0.8);
+    --medium-green: #437C4E;
+    --light-green: #729279;
+}

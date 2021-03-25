@@ -1,0 +1,34 @@
+/* Font OpenSans */
+@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
+
+/* Tags Base */
+
+body, html{
+    height: 100%;
+}
+
+body{
+    font-family: 'Open Sans', sans-serif;
+    background-color: var(--gray-white);
+}
+
+a{
+    text-decoration: none;
+}
+
+li{
+    list-style: none;
+}
+
+ul{
+    padding: 0;
+}
+
+/* Dashboard Body */
+
+#title h2{
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-size: calc(1.4rem + .9vw);;
+}
+

@@ -1,0 +1,120 @@
+/* Medias Dashboard - Width */
+
+@media (min-width: 1200px){
+    /* Dashboard Sidebar */
+    #sidebar{
+        width: 22%;
+        height: 100%;
+    }
+    
+    /* Dashboard Body */
+    #dashboard-body{
+        width: 78%;
+        height: 100%;
+    }
+}
+
+@media (max-width: 992px){
+    /* Dashboard Sidebar */
+    #sidebar{
+        position: fixed;
+        height: 100%;
+        width: 40%;
+        left: -40%;
+    }
+
+    /* Dashboard Body */
+    #dashboard-body #up-title{
+        margin-bottom: 30px;
+    }
+    #dashboard-body #toggle{
+        display: block;
+    }
+}
+
+@media (max-width: 768px){
+    /* Dashboard Sidebar */
+    #sidebar{
+        width: 50%;
+        left: -50%;
+    }
+}
+
+@media (max-width: 576px){
+    /* Dashboard Sidebar */
+    #sidebar{
+        width: 100%;
+        left: -100%;
+    }
+    #sidebar #logout{
+        margin-left: 6vw;
+    }
+
+    /* Dashboard Body */
+    #dashboard-body #up-title{
+        margin-bottom: 50px;
+    }
+    #dashboard-body #toggle{
+        position: absolute;
+        left: 85%;
+    }
+}
+
+@media (max-width: 280px){
+    /* Dashboard Body */
+    #dashboard-body #toggle{
+        left: 80%;
+    }
+}
+
+
+/* Medias Dashboard - Height */
+
+@media (max-height: 700px){
+    /* Dashboard Sidebar */
+    #sidebar #profile #img-profile{
+        width: 180px;
+        height: 180px;
+    }
+    #sidebar #profile{
+        margin-bottom: 4vh;
+    }
+    #sidebar #logout{
+        margin-top: 40px;
+        margin-left: 20px;
+    }
+}
+
+@media (max-height: 600px){
+    /* Dashboard Sidebar */
+    #sidebar #profile #img-profile{
+        width: 150px;
+        height: 150px;
+    }
+    #sidebar #menu ul li{
+        margin-bottom: 20px;
+    }
+    #sidebar #menu ul li a{
+        font-size: 1rem;
+    }
+    #sidebar #logout{
+        margin-top: 40px;
+        margin-left: 20px;
+    }
+}
+
+@media (max-height: 550px){
+    /* Dashboard Sidebar */
+    #sidebar{
+        position: relative;
+        display: block;
+        height: 600px;
+        left: 0%;
+    }
+    
+    /* Dashboard Body */
+    #dashboard-body #toggle{
+        display: none;
+    }
+    
+}
