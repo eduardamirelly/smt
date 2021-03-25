@@ -1,29 +1,3 @@
-/* Font OpenSans */
-@import url('https://fonts.googleapis.com/css2?family=Open+Sans:wght@300;400;600&display=swap');
-
-/* Config Tags Base */
-
-body, html{
-    height: 100%;
-}
-
-body{
-    font-family: 'Open Sans', sans-serif;
-    background-color: var(--gray-white);
-} 
-
-a{
-    text-decoration: none;
-}
-
-li{
-    list-style: none;
-}
-
-ul{
-    padding: 0;
-}
-
 /* Colors */
 
 :root{
@@ -37,6 +11,3 @@ ul{
     --medium-green: #437C4E;
     --light-green: #729279;
 }
-
-/* Config Dashboard Student */
-
