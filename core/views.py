@@ -3,7 +3,7 @@ from django.core.files.storage import FileSystemStorage, default_storage
 from django.core.files.images import ImageFile
 from django.http import HttpResponse
 from .forms import DataExcelForm, MatriculationStudent, AnamneseForm, ImageStudentForm
-from .models import Student, PhonesStudent, Anamnese, ImageFaceStudent
+from .models import Entry, Student, PhonesStudent, Anamnese, ImageFaceStudent
 from .import_file import excel_read, save_data
 import pandas as pd
 import os, base64, datetime, io
@@ -160,6 +160,11 @@ def deleteAnamnese(request, student, pk):
 
 #função que recebe um json
 def enterCampi(request):
-    print(request.GET)
     #aqui para gerar o objeto entrada e salvar
-    return HttpResponse("Sucesso olá max")
+    matriculation = request.GET.get('matriculation')
+    dt_enter = request.GET.get('dt_enter')
+    student = get_object_or_404(Student, matriculation=matriculation)
+    entry = Entry(student=student, dt_enter=dt_enter)
+    entry.save()
+
+    return HttpResponse("Xuxu beleza")
