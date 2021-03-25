@@ -70,11 +70,13 @@
 
         var sidebar = document.getElementById('sidebar');
         var porcent_left = sidebar.style.left;
+        var porcent_top = sidebar.style.up;
         var button_toggle_open = document.querySelector('#button-open');
         var button_toggle_close = document.querySelector('#button-close');
 
         function toggleSidebar(){
             sidebar.style.left = '0%';
+            sidebar.style.top = '0%';
             sidebar.style.transition = '0.5s';
             button_toggle_open.style.display = 'none';
             button_toggle_close.style.display = 'block';
@@ -82,6 +84,7 @@
 
         function closetoggleSidebar(){
             sidebar.style.left = porcent_left;
+            sidebar.style.top = porcent_top;
             button_toggle_close.style.display = 'none';
             button_toggle_open.style.display = 'block';
         }

@@ -1,4 +1,4 @@
-/* Medias Dashboard */
+/* Medias Dashboard - Width */
 
 @media (min-width: 1200px){
     /* Dashboard Sidebar */
@@ -60,10 +60,19 @@
     }
 }
 
+@media (max-width: 280px){
+    /* Dashboard Body */
+    #dashboard-body #toggle{
+        left: 80%;
+    }
+}
+
+
+/* Medias Dashboard - Height */
 
 @media (max-height: 700px){
     /* Dashboard Sidebar */
-    /* #sidebar #profile #img-profile{
+    #sidebar #profile #img-profile{
         width: 180px;
         height: 180px;
     }
@@ -71,7 +80,41 @@
         margin-bottom: 4vh;
     }
     #sidebar #logout{
-        margin-left: 6vw;
-    } */
+        margin-top: 40px;
+        margin-left: 20px;
+    }
+}
 
+@media (max-height: 600px){
+    /* Dashboard Sidebar */
+    #sidebar #profile #img-profile{
+        width: 150px;
+        height: 150px;
+    }
+    #sidebar #menu ul li{
+        margin-bottom: 20px;
+    }
+    #sidebar #menu ul li a{
+        font-size: 1rem;
+    }
+    #sidebar #logout{
+        margin-top: 40px;
+        margin-left: 20px;
+    }
+}
+
+@media (max-height: 550px){
+    /* Dashboard Sidebar */
+    #sidebar{
+        position: relative;
+        display: block;
+        height: 600px;
+        left: 0%;
+    }
+    
+    /* Dashboard Body */
+    #dashboard-body #toggle{
+        display: none;
+    }
+    
 }
