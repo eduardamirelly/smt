@@ -122,3 +122,10 @@
     text-decoration: underline;
 }
 
+/* Dashboard Modal Upload Image */
+
+#modal-upload .modal-header .modal-title{
+    font-weight: 600;
+    color: var(--medium-gray);
+}
+
