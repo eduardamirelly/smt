@@ -81,6 +81,6 @@ class Anamnese(models.Model):
         return self.student.name + f'  - Anamnese({self.id})'
     
 
-class Entrada(models.Model):
+class Entry(models.Model):
     student = models.ForeignKey(Student, on_delete=models.CASCADE)
-    dtenter = models.DateTimeField(auto_now_add=True)
+    dt_enter = models.DateTimeField()
