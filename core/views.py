@@ -161,10 +161,12 @@ def deleteAnamnese(request, student, pk):
 #função que recebe um json
 def enterCampi(request):
     #aqui para gerar o objeto entrada e salvar
-    matriculation = request.GET.get('matriculation')
     dt_enter = request.GET.get('dt_enter')
-    student = get_object_or_404(Student, matriculation=matriculation)
-    entry = Entry(student=student, dt_enter=dt_enter)
-    entry.save()
+    if Student.objects.filter(matriculation=request.GET.get('matriculation')).exists():
+        student = Student.objects.get(matriculation=request.GET.get('matriculation'))
+        entry = Entry(student=student, dt_enter=dt_enter)
+        entry.save()        
 
-    return HttpResponse("Xuxu beleza")
+        return HttpResponse("Xuxu beleza.")
+    else:
+        return HttpResponse('Matrícula inválida.')
