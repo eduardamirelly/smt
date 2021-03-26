@@ -106,18 +106,18 @@
     }
 }
 
-@media (max-height: 550px){
+@media (max-height: 550px) and (max-width: 992px){
     /* Dashboard Sidebar */
     #sidebar{
-        position: relative;
+        position: absolute;
         display: block;
         height: 600px;
-        left: 0%;
+        left: -600px;
     }
     
     /* Dashboard Body */
-    #dashboard-body #toggle{
+    /* #dashboard-body #toggle{
         display: none;
-    }
+    } */
 }
 
