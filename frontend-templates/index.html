@@ -83,7 +83,7 @@
                                         </div>
                                         <div id="preview-img" class="d-flex justify-content-center">
                                             <canvas id="canvas"></canvas>
-                                            <img id="preview" alt="img-preview">
+                                            <img id="preview" src="" alt="img-preview">
                                         </div>
                                     </div>
                                 </div>
@@ -136,10 +136,23 @@
         //Dashboard Upload Image
 
         function addFilePath(){
-            let filename = document.getElementById('input-file').files[0].name;
+            let file = document.getElementById('input-file').files[0];
+            let fileReader = new FileReader();
             let img_preview = document.getElementById('preview');
+            let canvas_tag = document.getElementById('canvas');
             let span_path = document.getElementById('file-path');
-            span_path.innerText = filename;
+            span_path.innerText = file.name;
+
+            fileReader.addEventListener("load", function(){
+                img_preview.src = fileReader.result;
+                img_preview.style.display = "block";
+                canvas_tag.style.display = "none";
+            }, false);
+
+            if(file){
+                fileReader.readAsDataURL(file);
+            }
+
         }
 
     </script>

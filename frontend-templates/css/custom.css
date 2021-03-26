@@ -172,7 +172,8 @@
     display: none;
 }
 
-#modal-upload form .modal-body #preview-img #canvas{
+#modal-upload form .modal-body #preview-img #canvas,
+#modal-upload form .modal-body #preview-img img{
     background-color: var(--light-gray);
     width: 250px;
     height: 250px;
