@@ -73,7 +73,23 @@
                             <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                         </div>
                         <div class="modal-body">
-
+                            <div class="container-fluid">
+                                <div class="row">
+                                    <div class="col">
+                                        <form>
+                                            <div id="upload">
+                                                <input id="input-file" type="file" id="formFile" onchange="addFilePath()" accept="image/*">
+                                                <label for="input-file">Escolher Arquivo</label>
+                                                <span id="file-path">Nenhum arquivo selecionado</span>
+                                            </div>
+                                            <div id="preview-img" class="d-flex justify-content-center">
+                                                <canvas id="canvas"></canvas>
+                                                <img alt="img-preview">
+                                            </div>
+                                        </form>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                         <div class="modal-footer">
 
@@ -93,6 +109,8 @@
     <script src="./js/bootstrap.min.js"></script>
     <script>
 
+        //Dashboard Sidenav
+
         var sidebar = document.getElementById('sidebar');
         var porcent_left = sidebar.style.left;
         var button_toggle_open = document.querySelector('#button-open');
@@ -109,6 +127,15 @@
             sidebar.style.left = porcent_left;
             button_toggle_close.style.display = 'none';
             button_toggle_open.style.display = 'block';
+        }
+
+        //Dashboard Upload Image
+
+        function addFilePath(){
+            let filename = document.getElementById('input-file').files[0].name;
+            let img_preview = document.getElementById('');
+            let span_path = document.getElementById('file-path');
+            span_path.innerText = filename;
         }
 
     </script>

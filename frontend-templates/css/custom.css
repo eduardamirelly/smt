@@ -124,8 +124,52 @@
 
 /* Dashboard Modal Upload Image */
 
+#modal-upload{
+    width: 0;
+    padding: 0;
+}
+
 #modal-upload .modal-header .modal-title{
     font-weight: 600;
     color: var(--medium-gray);
 }
+
+#modal-upload .modal-body form #upload{
+    background-color: var(--gray-white);
+    border-radius: 5px;
+}
+
+#modal-upload .modal-body form #upload input[type="file"]{
+    display: none;
+}
+
+#modal-upload .modal-body form #upload label{
+    background-color: var(--light-green);
+    padding: 10px 40px;
+    border-radius: 5px 0px 0px 5px;
+    color: var(--gray-white);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#modal-upload .modal-body form #upload span{
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+#modal-upload .modal-body form #preview-img{
+    margin: 60px 0px;
+}
+
+#modal-upload .modal-body form #preview-img img{
+    display: none;
+}
+
+#modal-upload .modal-body form #preview-img #canvas{
+    background-color: var(--light-gray);
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+}
+
 
