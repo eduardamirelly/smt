@@ -83,7 +83,7 @@
                                         </div>
                                         <div id="preview-img" class="d-flex justify-content-center">
                                             <canvas id="canvas"></canvas>
-                                            <img alt="img-preview">
+                                            <img id="preview" alt="img-preview">
                                         </div>
                                     </div>
                                 </div>
@@ -137,7 +137,7 @@
 
         function addFilePath(){
             let filename = document.getElementById('input-file').files[0].name;
-            let img_preview = document.getElementById('');
+            let img_preview = document.getElementById('preview');
             let span_path = document.getElementById('file-path');
             span_path.innerText = filename;
         }
