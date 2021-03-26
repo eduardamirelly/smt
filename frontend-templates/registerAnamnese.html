@@ -20,7 +20,7 @@
                 <img id="img-profile" class="img-fluid" src="./assets/person.jpg" alt="profile-student">
                 <p>Name Student</p>
             </div>
-            
+
             <div id="menu" class="d-flex justify-content-center">
                 <ul>
                     <li><a href="#"><img src="./assets/icons/home-icon.svg" alt="home-icon">Início</a></li>
@@ -39,11 +39,12 @@
         <!-- Body Dashboard -->
         <div id="dashboard-body" class="col-xl-10 col-lg-9 d-flex flex-column">
             <div id="up-title" class="d-flex justify-content-between align-items-center">
-                <div id="breadcrumb"> 
+                <div id="breadcrumb">
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Início</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dados do Estudante</li>
+                            <li class="breadcrumb-item"><a href="#">Anamneses</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Cadastro</li>
                         </ol>
                     </nav>
                 </div>
@@ -53,18 +54,117 @@
                 </div>
             </div>
             <div id="title" class="align-self-center">
-                <h2>Dados do Estudante</h2>
+                <h2>Cadastro Anamnese</h2> <br>
             </div>
             <div>
                 <!-- Body -->
                 <!-- Parte modificável -->
+
+                <div class="anamnese">
+                    <div class="d-flex flex-column">
+
+                            <div class="container">
+                                <form class="form" method="post">
+                                      <div class="row justify-content-md-center">
+                                              <div class="col col-lg-3">
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 1">
+                                                        <label class="form-check-label" for="symptom 1">Febre</label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 2">
+                                                        <label class="form-check-label" for="symptom 2">Cansaço</label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 3">
+                                                        <label class="form-check-label" for="symptom 3">Tosse seca</label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 4">
+                                                        <label class="form-check-label" for="symptom 4">Diarréia</label>
+                                                    </div>
+                                              </div>
+
+                                              <div class="col col-lg-3">
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 5">
+                                                        <label class="form-check-label" for="symptom 5">Dores no corpo</label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 6">
+                                                        <label class="form-check-label" for="symptom 6">Congestão nasal</label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 7">
+                                                        <label class="form-check-label" for="symptom 7">Dor de cabeça</label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 8">
+                                                        <label class="form-check-label" for="symptom 8">Perda do paladar <br>
+                                                          ou olfato</label>
+                                                    </div>
+                                              </div>
+
+                                              <div class="col col-lg-3">
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 9">
+                                                        <label class="form-check-label" for="symptom 9">Falta de ar</label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 10">
+                                                        <label class="form-check-label" for="symptom 10">Conjutivite</label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 11">
+                                                        <label class="form-check-label" for="symptom 11">Dor de garganta</label>
+                                                    </div>
+
+                                                    <div class="form-check">
+                                                        <input class="form-check-input" type="checkbox" value="" id="symptom 12">
+                                                        <label class="form-check-label" for="symptom 12">Erupção cutânea na pele ou descoloração dos dedos</label>
+                                                    </div>
+                                              </div>
+
+                                      </div>
+
+                                      <div class="row justify-content-md-center">
+                                          <div class="col col-lg-9">
+                                              <div class="mb-3">
+                                                  <label for="exampleFormControlTextarea1" class="form-label">Outros sintomas:</label>
+                                                  <textarea class="form-control" id="exampleFormControlTextarea1" rows="3"></textarea> <br>
+                                              </div>
+
+                                              <div class="d-grid gap-2 col-3 mx-auto">
+                                                  <button class="btn btn-success" type="button">Cadastrar Anamnese</button>
+                                              </div>
+                                          </div>
+                                      </div>
+
+                                </form>
+                          </div>
+                  </div>
+                </div>
+          <!--     -->
+
+
             </div>
         </div>
         <!-- End Body Dashboard -->
 
     </section>
     <!-- End Dashboard Student -->
-    
+
     <!-- BOOTSTRAP JS -->
     <script src="./js/bootstrap.min.js"></script>
     <script>
