@@ -29,7 +29,7 @@
     border-radius: 100%;
     height: 200px;
     object-fit: cover;
-    width: 200px;  
+    width: 200px;
     background-color: var(--gray-white);
     margin-top: 40px;
     z-index: 1;
@@ -122,3 +122,23 @@
     text-decoration: underline;
 }
 
+/* Register Anamnese */
+
+.d-flex h3 {
+  text-align: center;
+  color: #565656;
+}
+.form-check-input {
+  font-size: 20px;
+}
+.form-check-label {
+  font-size: 15px;
+  padding: 4px;
+}
+.form-label {
+  font-size: 15px;
+}
+.btn {
+  background-color: #729279;
+  border: none;
+}
