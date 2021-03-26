@@ -24,11 +24,35 @@ ul{
     padding: 0;
 }
 
-/* Dashboard Body */
+/* Dashboard Modal */
 
-#title h2{
-    font-weight: 600;
-    color: var(--dark-gray);
-    font-size: calc(1.4rem + .9vw);;
+.texts-info{
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--light-gray);
 }
 
+.texts-info p{
+    margin-bottom: 0px;
+}
+
+.texts-info, .btn-send{
+    margin: 10px 20px;
+}
+
+.btn-send button{
+    font-weight: 600;
+    color: var(--gray-white);
+    border: none;
+    border-radius: 5px;
+    padding: 10px 30px;
+    background-color: var(--light-green);
+}
+
+.btn-send button:hover{
+    background-color: var(--medium-green);
+}
+
+.btn-send button:focus{
+    box-shadow: none;
+}

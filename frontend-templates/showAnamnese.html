@@ -16,7 +16,7 @@
         <!-- Sidebar -->
         <nav id="sidebar" class="col-xl-2 col-lg-3 d-flex flex-column justify-content-center">
             <div id="profile" class="d-flex flex-column align-items-center">
-                <span><a href="#" data-bs-toggle="modal" data-bs-target="#modalUpload" data-bs-toggle="tooltip" data-bs-placement="top" title="Mudar foto"><img src="./assets/icons/camera-icon.svg" alt="camera-icon"></a></span>
+                <span><a href="#" data-bs-toggle="tooltip" data-bs-placement="top" title="Mudar foto"><img src="./assets/icons/camera-icon.svg" alt="camera-icon"></a></span>
                 <img id="img-profile" class="img-fluid" src="./assets/person.jpg" alt="profile-student">
                 <p>Name Student</p>
             </div>
@@ -62,58 +62,12 @@
         </div>
         <!-- End Body Dashboard -->
 
-        <!-- Modal Upload Image -->
-        <div id="modal-upload">
-            <div class="modal fade" tabindex="-1" id="modalUpload" aria-labelledby="title-upload" aria-hidden="true">
-                <div class="modal-dialog modal-dialog-centered modal-xl">
-                    <div class="modal-content">
-                        <!-- Form Upload Image -->
-                        <form>
-                            <div class="modal-header">
-                                <h5 class="modal-title">Upload - Imagem Perfil</h5>
-                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
-                            </div>
-                            <div class="modal-body">
-                                <div class="row">
-                                    <div class="col">
-                                        <div id="upload">
-                                            <input id="input-file" type="file" id="formFile" onchange="addFilePath()" accept="image/*">
-                                            <label for="input-file">Escolher Arquivo</label>
-                                            <span id="file-path">Nenhum arquivo selecionado</span>
-                                        </div>
-                                        <div id="preview-img" class="d-flex justify-content-center">
-                                            <canvas id="canvas"></canvas>
-                                            <img id="preview" alt="img-preview">
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
-                            <div class="modal-footer d-flex justify-content-between">
-                                <div class="texts-info">
-                                    <p>* Tamanho mínimo aceitado: 180x180 pixels</p>
-                                    <p>* Tamanho máximo aceitado: 000x000 pixels</p>
-                                </div>
-                                <div class="btn-send">
-                                    <button type="submit" class="btn">Enviar</button>
-                                </div>
-                            </div>
-                        </form>
-                        <!-- End Form Upload Image -->
-                    </div>
-                </div>
-
-            </div>
-        </div>
-        <!-- End Modal Upload Image -->
-
     </section>
     <!-- End Dashboard Student -->
     
     <!-- BOOTSTRAP JS -->
     <script src="./js/bootstrap.min.js"></script>
     <script>
-
-        //Dashboard Sidenav
 
         var sidebar = document.getElementById('sidebar');
         var porcent_left = sidebar.style.left;
@@ -131,15 +85,6 @@
             sidebar.style.left = porcent_left;
             button_toggle_close.style.display = 'none';
             button_toggle_open.style.display = 'block';
-        }
-
-        //Dashboard Upload Image
-
-        function addFilePath(){
-            let filename = document.getElementById('input-file').files[0].name;
-            let img_preview = document.getElementById('preview');
-            let span_path = document.getElementById('file-path');
-            span_path.innerText = filename;
         }
 
     </script>
