@@ -26,6 +26,21 @@ ul{
 
 /* Dashboard Modal */
 
+.modal-header .modal-title{
+    font-weight: 600;
+    color: var(--medium-gray);
+}
+
+.modal-header .btn-close:focus{
+    box-shadow: none;
+}
+
+.modal-header .modal-title,
+.modal-header .btn-close,
+.modal-body{
+    margin: 0px 20px;
+}
+
 .texts-info{
     font-size: 0.7rem;
     font-weight: 400;
@@ -44,7 +59,6 @@ ul{
     font-weight: 600;
     color: var(--gray-white);
     border: none;
-    border-radius: 5px;
     padding: 10px 30px;
     background-color: var(--light-green);
 }
@@ -55,4 +69,8 @@ ul{
 
 .btn-send button:focus{
     box-shadow: none;
+}
+
+.btn-send .btn{
+    border-radius: 5px;
 }
