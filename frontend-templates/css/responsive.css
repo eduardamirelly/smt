@@ -14,6 +14,18 @@
     }
 }
 
+@media (max-width: 1200px){
+    /* Dashboard Modal Webcam */
+    #modal-webcam .modal-body .col{
+        margin: 40px 0px 40px 0px !important;
+    }
+    #modal-webcam .modal-body .col #webcam,
+    #modal-webcam .modal-body .col #shot{
+       width: 350px;
+       height: 250px;
+    }
+}
+
 @media (max-width: 992px){
     /* Dashboard Sidebar */
     #sidebar{
@@ -40,6 +52,17 @@
     }
     #modal-upload form .modal-body #upload span{
         margin-left: 15px;
+    }
+
+    /* Dashboard Modal Webcam */
+    #modal-webcam .modal-body .col{
+        margin: 40px 0px 40px 0px !important;
+    }
+
+    #modal-webcam .modal-body .col #webcam,
+    #modal-webcam .modal-body .col #shot{
+       width: 380px;
+       height: 280px;
     }
 }
 
@@ -75,6 +98,17 @@
     #modal-upload form .modal-body #upload span{
         font-size: 0.8rem;
     }
+
+    /* Dashboard Modal Webcam */
+    #modal-webcam .modal-body .col{
+        margin: 20px 0px 20px 0px !important;
+    }
+
+    #modal-webcam .modal-body .col #webcam,
+    #modal-webcam .modal-body .col #shot{
+       width: 340px;
+       height: 240px;
+    }
 }
 
 @media (max-width: 430px){
@@ -103,12 +137,46 @@
         width: 200px;
         height: 200px;
     }
+
+    /* Dashboard Modal Webcam */
+    #modal-webcam .modal-body .col #webcam,
+    #modal-webcam .modal-body .col #shot{
+       width: 280px;
+       height: 180px;
+    }
+}
+
+@media (max-width: 352px){
+    /* Dashboard Modal Webcam */
+    #modal-webcam .modal-body .col #webcam,
+    #modal-webcam .modal-body .col #shot{
+       width: 230px;
+       height: 130px;
+    }
+
+    #modal-webcam .modal-footer{
+        justify-content: center !important;
+    }
+
+    #modal-webcam .modal-footer .btn-send button{
+        padding: 10px 15px;
+        width: 100%;
+        margin-bottom: 10px;
+        margin-left: 0px !important;
+    }
 }
 
 @media (max-width: 280px){
     /* Dashboard Body */
     #dashboard-body #toggle{
         left: 80%;
+    }
+
+    /* Dashboard Modal Webcam */
+    #modal-webcam .modal-body .col #webcam,
+    #modal-webcam .modal-body .col #shot{
+       width: 200px;
+       height: 100px;
     }
 }
 
@@ -148,6 +216,13 @@
     }
 }
 
+@media (min-height: 1200px){
+    /* Dashboard Modal Webcam */
+    #modal-webcam .modal-footer{
+        justify-content: center !important;
+    }
+}
+    
 
 /* Medias Dashboard - Width e Height */
 

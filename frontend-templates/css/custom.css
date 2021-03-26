@@ -78,6 +78,7 @@
     margin-bottom: 3px;
 }
 
+
 /* Dashboard Body */
 
 #dashboard-body #up-title{
@@ -128,21 +129,12 @@
     text-decoration: underline;
 }
 
+
 /* Dashboard Modal Upload Image */
 
-#modal-upload{
+#modal-upload, #modal-webcam{
     width: 0;
     padding: 0;
-}
-
-#modal-upload form .modal-header .modal-title{
-    font-weight: 600;
-    color: var(--medium-gray);
-}
-#modal-upload form .modal-header .modal-title,
-#modal-upload form .modal-header .btn-close,
-#modal-upload form .modal-body{
-    margin: 0px 20px;
 }
 
 #modal-upload form .modal-body #upload{
@@ -187,23 +179,64 @@
     border-radius: 100%;
 }
 
+
+/* Dashboard Modal Webcam */
+
+#modal-webcam .modal-body .col:nth-child(1){
+    margin: 40px 20px 40px 0px;
+}
+
+#modal-webcam .modal-body .col:nth-child(2){
+    margin: 40px 0px 40px 20px;
+}
+
+#modal-webcam .modal-body #webcam,
+#modal-webcam .modal-body #shot{
+    width: 400px;
+    height: 300px;
+    background-color: var(--light-gray);
+}
+
+#modal-webcam .modal-footer .btn-send button:nth-child(2){
+    margin-left: 10px;
+}
+
+
+/* Dashboard Photo Gallery */
+
+#photos-gallery button{
+    padding: 5px 10px;
+    background-color: var(--light-green);
+    border: none;
+    border-radius: 5px;
+}
+
+#photos-gallery button:hover{
+    background-color: var(--medium-green);
+}
+
+#photos-gallery button img{
+    width: 40px;
+}
+
+
 /* Register Anamnese */
 
-.d-flex h3 {
+.d-flex h3{
   text-align: center;
   color: #565656;
 }
-.form-check-input {
+.form-check-input{
   font-size: 20px;
 }
-.form-check-label {
+.form-check-label{
   font-size: 15px;
   padding: 4px;
 }
-.form-label {
+.form-label{
   font-size: 15px;
 }
-.btn {
+.btn{
   background-color: #729279;
   border: none;
 }

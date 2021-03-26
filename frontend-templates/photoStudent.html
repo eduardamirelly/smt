@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <!-- CSS MAIN -->
+    <link rel="stylesheet" href="./css/main.css">
+</head>
+<body>
+
+    <!-- Dashboard Student -->
+    <section id="dashboard" class="row">
+
+        <!-- Sidebar -->
+        <nav id="sidebar" class="col-xl-2 col-lg-3 d-flex flex-column justify-content-center">
+            <div id="profile" class="d-flex flex-column align-items-center">
+                <span><a href="#" data-bs-toggle="modal" data-bs-target="#modalUpload" data-bs-toggle="tooltip" data-bs-placement="top" title="Mudar foto"><img src="./assets/icons/camera-icon.svg" alt="camera-icon"></a></span>
+                <img id="img-profile" class="img-fluid" src="./assets/person.jpg" alt="profile-student">
+                <p>Name Student</p>
+            </div>
+            
+            <div id="menu" class="d-flex justify-content-center">
+                <ul>
+                    <li><a href="#"><img src="./assets/icons/home-icon.svg" alt="home-icon">Início</a></li>
+                    <li><a href="#"><img src="./assets/icons/student-icon.svg" alt="student-icon">Dados do Estudante</a></li>
+                    <li><a href="#"><img src="./assets/icons/anamneses-icon.svg" alt="anamneses-icon">Anamneses</a></li>
+                    <li><a href="#"><img src="./assets/icons/images-icon.svg" alt="images-icon">Fotos Webcam</a></li>
+                </ul>
+            </div>
+
+            <div id="logout" class="align-self-start">
+                <a href="#">Sair<img src="./assets/icons/logout-icon.svg" alt="logout-icon"></a>
+            </div>
+        </nav>
+        <!-- End Sidebar -->
+
+        <!-- Body Dashboard -->
+        <div id="dashboard-body" class="col-xl-10 col-lg-9 d-flex flex-column">
+            <div id="up-title" class="d-flex justify-content-between align-items-center">
+                <div id="breadcrumb"> 
+                    <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
+                        <ol class="breadcrumb">
+                            <li class="breadcrumb-item"><a href="#">Início</a></li>
+                            <li class="breadcrumb-item active" aria-current="page">Fotos Webcam</li>
+                        </ol>
+                    </nav>
+                </div>
+                <div id="toggle">
+                    <button id="button-open" onclick="toggleSidebar()"><img src="./assets/icons/menu-icon.svg" alt="menu-icon"></button>
+                    <button id="button-close" onclick="closetoggleSidebar()"><img src="./assets/icons/close-icon.svg" alt="close-icon"></button>
+                </div>
+            </div>
+            <div id="title" class="align-self-center">
+                <h2>Fotos Webcam</h2>
+            </div>
+            <div id="photos-gallery" class="align-self-center">
+                <!-- Body -->
+                <!-- Parte modificável -->
+                <!-- Button para ativar o modal da webcam -->
+                <button type="button" data-bs-toggle="modal" data-bs-target="#modalWebcam"><img src="./assets/icons/camera-icon.svg" alt="camera-icon"></button>
+            </div>
+        </div>
+        <!-- End Body Dashboard -->
+
+        <!-- Modal Photos Webcam -->
+
+        <div id="modal-webcam">
+            <div class="modal fade" tabindex="-1" id="modalWebcam" aria-labelledby="title-webcam" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="title-webcam">Webcam</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col d-flex justify-content-center justify-content-xl-end justify-content-lg-end">
+                                    <canvas id="webcam"></canvas>
+                                </div>
+                                <div class="col d-flex justify-content-center justify-content-xl-start justify-content-lg-start">
+                                    <canvas id="shot"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <div class="texts-info">
+                                <p>* Quando a câmera for iniciada, clique no botão "Tirar Foto". Clique novamente
+                                    para o caso da sua foto não ter ficado nítida.</p>
+                            </div>
+                            <div class="btn-send">
+                                <button type="submit" class="btn">Tirar Foto</button>
+                                <button type="submit" class="btn">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Modal Photos Webcam -->
+        
+        <!-- Modal Upload Image -->
+        <div id="modal-upload">
+            <div class="modal fade" tabindex="-1" id="modalUpload" aria-labelledby="title-upload" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <!-- Form Upload Image -->
+                        <form>
+                            <div class="modal-header">
+                                <h5 class="modal-title" id="title-upload">Upload - Imagem Perfil</h5>
+                                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                            </div>
+                            <div class="modal-body">
+                                <div class="row">
+                                    <div class="col">
+                                        <div id="upload">
+                                            <input id="input-file" type="file" id="formFile" onchange="addFilePath()" accept="image/*">
+                                            <label for="input-file">Escolher Arquivo</label>
+                                            <span id="file-path">Nenhum arquivo selecionado</span>
+                                        </div>
+                                        <div id="preview-img" class="d-flex justify-content-center">
+                                            <canvas id="canvas"></canvas>
+                                            <img id="preview" alt="img-preview">
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="modal-footer d-flex justify-content-between">
+                                <div class="texts-info">
+                                    <p>* Tamanho mínimo aceitado: 180x180 pixels</p>
+                                    <p>* Tamanho máximo aceitado: 000x000 pixels</p>
+                                </div>
+                                <div class="btn-send">
+                                    <button type="submit" class="btn">Enviar</button>
+                                </div>
+                            </div>
+                        </form>
+                        <!-- End Form Upload Image -->
+                    </div>
+                </div>
+
+            </div>
+        </div>
+        <!-- End Modal Upload Image -->
+
+    </section>
+    <!-- End Dashboard Student -->
+    
+    <!-- BOOTSTRAP JS -->
+    <script src="./js/bootstrap.min.js"></script>
+    <script>
+
+        //Dashboard Sidenav
+
+        var sidebar = document.getElementById('sidebar');
+        var porcent_left = sidebar.style.left;
+        var button_toggle_open = document.querySelector('#button-open');
+        var button_toggle_close = document.querySelector('#button-close');
+
+        function toggleSidebar(){
+            sidebar.style.left = '0%';
+            sidebar.style.transition = '0.5s';
+            button_toggle_open.style.display = 'none';
+            button_toggle_close.style.display = 'block';
+        }
+
+        function closetoggleSidebar(){
+            sidebar.style.left = porcent_left;
+            button_toggle_close.style.display = 'none';
+            button_toggle_open.style.display = 'block';
+        }
+
+        //Dashboard Upload Image
+
+        function addFilePath(){
+            let filename = document.getElementById('input-file').files[0].name;
+            let img_preview = document.getElementById('preview');
+            let span_path = document.getElementById('file-path');
+            span_path.innerText = filename;
+        }
+
+    </script>
+
+</body>
+</html>

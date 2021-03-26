@@ -15,7 +15,7 @@ urlpatterns = [
     path('student/<str:student>/anamnese/list/<int:pk>/', views.showAnamnese, name='show-anamnese'),
     path('student/<str:student>/anamnese/register/', views.registerAnamneseStudent, name='register-anamnese'),
     path('student/<str:student>/anamnese/delete/<int:pk>/', views.deleteAnamnese, name='delete-anamnese'),
-    path('entrada', views.enterCampi, name='enter-campi'),
+    path('entry/', views.enterCampi, name='enter-campi'),
 ]
 
 
