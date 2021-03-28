@@ -88,7 +88,7 @@
 #dashboard-body #title h2{
     font-weight: 600;
     color: var(--dark-gray);
-    font-size: calc(1.4rem + .9vw);;
+    font-size: calc(1.4rem + .9vw);
 }
 
 #dashboard-body #toggle{
@@ -172,7 +172,8 @@
     display: none;
 }
 
-#modal-upload form .modal-body #preview-img #canvas{
+#modal-upload form .modal-body #preview-img #canvas,
+#modal-upload form .modal-body #preview-img img{
     background-color: var(--light-gray);
     width: 250px;
     height: 250px;
@@ -197,7 +198,7 @@
     background-color: var(--light-gray);
 }
 
-#modal-webcam .modal-footer .btn-send button:nth-child(2){
+#modal-webcam .modal-footer .btn-green button:nth-child(2){
     margin-left: 10px;
 }
 
@@ -222,21 +223,40 @@
 
 /* Register Anamnese */
 
-.d-flex h3{
-  text-align: center;
-  color: #565656;
+#anamnese form #checks{
+    margin: 0px 2px;
 }
-.form-check-input{
+
+#anamnese form .form-check .form-check-input{
   font-size: 20px;
 }
-.form-check-label{
+
+#anamnese form .form-check .form-check-input:checked,
+#anamnese form .form-check .form-check-input:active{
+    background-color: var(--light-green);
+    border: 1px solid var(--medium-green);
+}
+
+#anamnese form .form-check .form-check-label{
   font-size: 15px;
   padding: 4px;
 }
-.form-label{
+
+#anamnese form .form-label{
   font-size: 15px;
 }
-.btn{
-  background-color: #729279;
-  border: none;
+
+#anamnese form .btn-green button{
+    padding: 10px 10px;
+}
+
+#anamnese form .form-check .form-check-input:focus,
+#anamnese form textarea:focus{
+    box-shadow: none;
+    border: 1px solid var(--medium-green);
+}
+
+#anamnese form textarea{
+    font-weight: 400;
+    font-size: 0.8rem;
 }

@@ -55,7 +55,7 @@ ul{
     margin: 10px 20px;
 }
 
-.btn-send button{
+.btn-green button{
     font-weight: 600;
     color: var(--gray-white);
     border: none;
@@ -63,14 +63,15 @@ ul{
     background-color: var(--light-green);
 }
 
-.btn-send button:hover{
+.btn-green button:hover{
     background-color: var(--medium-green);
+    color: var(--gray-white);
 }
 
-.btn-send button:focus{
+.btn-green button:focus{
     box-shadow: none;
 }
 
-.btn-send .btn{
+.btn-green .btn{
     border-radius: 5px;
 }
