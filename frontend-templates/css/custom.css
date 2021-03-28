@@ -89,7 +89,6 @@
     font-weight: 600;
     color: var(--dark-gray);
     font-size: calc(1.4rem + .9vw);
-    margin-bottom: 50px;
 }
 
 #dashboard-body #toggle{
@@ -199,7 +198,7 @@
     background-color: var(--light-gray);
 }
 
-#modal-webcam .modal-footer .btn-send button:nth-child(2){
+#modal-webcam .modal-footer .btn-green button:nth-child(2){
     margin-left: 10px;
 }
 
@@ -228,6 +227,12 @@
   font-size: 20px;
 }
 
+#anamnese form .form-check .form-check-input:checked,
+#anamnese form .form-check .form-check-input:active{
+    background-color: var(--light-green);
+    border: 1px solid var(--medium-green);
+}
+
 #anamnese form .form-check .form-check-label{
   font-size: 15px;
   padding: 4px;
@@ -237,8 +242,17 @@
   font-size: 15px;
 }
 
-/* Ajustar button */
-#anamnese form .btn{
-  background-color: #729279;
-  border: none;
+#anamnese form .btn-green button{
+    padding: 10px 10px;
+}
+
+#anamnese form .form-check .form-check-input:focus,
+#anamnese form textarea:focus{
+    box-shadow: none;
+    border: 1px solid var(--medium-green);
+}
+
+#anamnese form textarea{
+    font-weight: 400;
+    font-size: 0.8rem;
 }
