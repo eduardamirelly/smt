@@ -124,21 +124,21 @@
 
 /* Register Anamnese */
 
-.d-flex h3 {
-  text-align: center;
-  color: #565656;
-}
-.form-check-input {
+#anamnese form .form-check .form-check-input{
   font-size: 20px;
 }
-.form-check-label {
+
+#anamnese form .form-check .form-check-label{
   font-size: 15px;
   padding: 4px;
 }
-.form-label {
+
+#anamnese form .form-label{
   font-size: 15px;
 }
-.btn {
+
+/* Ajustar button */
+#anamnese form .btn{
   background-color: #729279;
   border: none;
 }
