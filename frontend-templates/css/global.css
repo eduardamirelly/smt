@@ -24,12 +24,53 @@ ul{
     padding: 0;
 }
 
-/* Dashboard Body */
+/* Dashboard Modal */
 
-#title h2{
+.modal-header .modal-title{
     font-weight: 600;
-    color: var(--dark-gray);
-    font-size: calc(1.4rem + .9vw);;
-    margin-bottom: 50px;
+    color: var(--medium-gray);
 }
 
+.modal-header .btn-close:focus{
+    box-shadow: none;
+}
+
+.modal-header .modal-title,
+.modal-header .btn-close,
+.modal-body{
+    margin: 0px 20px;
+}
+
+.texts-info{
+    font-size: 0.7rem;
+    font-weight: 400;
+    color: var(--light-gray);
+}
+
+.texts-info p{
+    margin-bottom: 0px;
+}
+
+.texts-info, .btn-send{
+    margin: 10px 20px;
+}
+
+.btn-send button{
+    font-weight: 600;
+    color: var(--gray-white);
+    border: none;
+    padding: 10px 30px;
+    background-color: var(--light-green);
+}
+
+.btn-send button:hover{
+    background-color: var(--medium-green);
+}
+
+.btn-send button:focus{
+    box-shadow: none;
+}
+
+.btn-send .btn{
+    border-radius: 5px;
+}

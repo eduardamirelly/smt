@@ -43,7 +43,7 @@
                     <nav style="--bs-breadcrumb-divider: '>';" aria-label="breadcrumb">
                         <ol class="breadcrumb">
                             <li class="breadcrumb-item"><a href="#">Início</a></li>
-                            <li class="breadcrumb-item active" aria-current="page">Dados do Estudante</li>
+                            <li class="breadcrumb-item active" aria-current="page">Fotos Webcam</li>
                         </ol>
                     </nav>
                 </div>
@@ -53,15 +53,54 @@
                 </div>
             </div>
             <div id="title" class="align-self-center">
-                <h2>Dados do Estudante</h2>
+                <h2>Fotos Webcam</h2>
             </div>
-            <div>
+            <div id="photos-gallery" class="align-self-center">
                 <!-- Body -->
                 <!-- Parte modificável -->
+                <!-- Button para ativar o modal da webcam -->
+                <button type="button" data-bs-toggle="modal" data-bs-target="#modalWebcam"><img src="./assets/icons/camera-icon.svg" alt="camera-icon"></button>
             </div>
         </div>
         <!-- End Body Dashboard -->
 
+        <!-- Modal Photos Webcam -->
+
+        <div id="modal-webcam">
+            <div class="modal fade" tabindex="-1" id="modalWebcam" aria-labelledby="title-webcam" aria-hidden="true">
+                <div class="modal-dialog modal-dialog-centered modal-xl">
+                    <div class="modal-content">
+                        <div class="modal-header">
+                            <h5 class="modal-title" id="title-webcam">Webcam</h5>
+                            <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                        </div>
+                        <div class="modal-body">
+                            <div class="row">
+                                <div class="col d-flex justify-content-center justify-content-xl-end justify-content-lg-end">
+                                    <canvas id="webcam"></canvas>
+                                </div>
+                                <div class="col d-flex justify-content-center justify-content-xl-start justify-content-lg-start">
+                                    <canvas id="shot"></canvas>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="modal-footer d-flex justify-content-between">
+                            <div class="texts-info">
+                                <p>* Quando a câmera for iniciada, clique no botão "Tirar Foto". Clique novamente
+                                    para o caso da sua foto não ter ficado nítida.</p>
+                            </div>
+                            <div class="btn-send">
+                                <button type="submit" class="btn">Tirar Foto</button>
+                                <button type="submit" class="btn">Enviar</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- End Modal Photos Webcam -->
+        
         <!-- Modal Upload Image -->
         <div id="modal-upload">
             <div class="modal fade" tabindex="-1" id="modalUpload" aria-labelledby="title-upload" aria-hidden="true">
@@ -70,7 +109,7 @@
                         <!-- Form Upload Image -->
                         <form>
                             <div class="modal-header">
-                                <h5 class="modal-title">Upload - Imagem Perfil</h5>
+                                <h5 class="modal-title" id="title-upload">Upload - Imagem Perfil</h5>
                                 <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
                             </div>
                             <div class="modal-body">
@@ -83,7 +122,7 @@
                                         </div>
                                         <div id="preview-img" class="d-flex justify-content-center">
                                             <canvas id="canvas"></canvas>
-                                            <img id="preview" src="" alt="img-preview">
+                                            <img id="preview" alt="img-preview">
                                         </div>
                                     </div>
                                 </div>
@@ -136,23 +175,10 @@
         //Dashboard Upload Image
 
         function addFilePath(){
-            let file = document.getElementById('input-file').files[0];
-            let fileReader = new FileReader();
+            let filename = document.getElementById('input-file').files[0].name;
             let img_preview = document.getElementById('preview');
-            let canvas_tag = document.getElementById('canvas');
             let span_path = document.getElementById('file-path');
-            span_path.innerText = file.name;
-
-            fileReader.addEventListener("load", function(){
-                img_preview.src = fileReader.result;
-                img_preview.style.display = "block";
-                canvas_tag.style.display = "none";
-            }, false);
-
-            if(file){
-                fileReader.readAsDataURL(file);
-            }
-
+            span_path.innerText = filename;
         }
 
     </script>

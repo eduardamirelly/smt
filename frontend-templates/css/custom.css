@@ -78,10 +78,18 @@
     margin-bottom: 3px;
 }
 
+
 /* Dashboard Body */
 
 #dashboard-body #up-title{
     margin: 40px 5vw 20px 5vw;
+}
+
+#dashboard-body #title h2{
+    font-weight: 600;
+    color: var(--dark-gray);
+    font-size: calc(1.4rem + .9vw);
+    margin-bottom: 50px;
 }
 
 #dashboard-body #toggle{
@@ -121,6 +129,98 @@
 #dashboard-body #breadcrumb nav ol li a:hover{
     text-decoration: underline;
 }
+
+
+/* Dashboard Modal Upload Image */
+
+#modal-upload, #modal-webcam{
+    width: 0;
+    padding: 0;
+}
+
+#modal-upload form .modal-body #upload{
+    background-color: var(--gray-white);
+    border-radius: 5px;
+}
+
+#modal-upload form .modal-body #upload input[type="file"]{
+    display: none;
+}
+
+#modal-upload form .modal-body #upload label{
+    background-color: var(--light-green);
+    padding: 10px 40px;
+    border-radius: 5px 0px 0px 5px;
+    color: var(--gray-white);
+    cursor: pointer;
+    font-weight: 600;
+}
+
+#modal-upload form .modal-body #upload label:hover{
+    background-color: var(--medium-green);
+}
+
+#modal-upload form .modal-body #upload span{
+    font-weight: 400;
+    margin-left: 20px;
+}
+
+#modal-upload form .modal-body #preview-img{
+    margin: 60px 0px;
+}
+
+#modal-upload form .modal-body #preview-img img{
+    display: none;
+}
+
+#modal-upload form .modal-body #preview-img #canvas,
+#modal-upload form .modal-body #preview-img img{
+    background-color: var(--light-gray);
+    width: 250px;
+    height: 250px;
+    border-radius: 100%;
+}
+
+
+/* Dashboard Modal Webcam */
+
+#modal-webcam .modal-body .col:nth-child(1){
+    margin: 40px 20px 40px 0px;
+}
+
+#modal-webcam .modal-body .col:nth-child(2){
+    margin: 40px 0px 40px 20px;
+}
+
+#modal-webcam .modal-body #webcam,
+#modal-webcam .modal-body #shot{
+    width: 400px;
+    height: 300px;
+    background-color: var(--light-gray);
+}
+
+#modal-webcam .modal-footer .btn-send button:nth-child(2){
+    margin-left: 10px;
+}
+
+
+/* Dashboard Photo Gallery */
+
+#photos-gallery button{
+    padding: 5px 10px;
+    background-color: var(--light-green);
+    border: none;
+    border-radius: 5px;
+}
+
+#photos-gallery button:hover{
+    background-color: var(--medium-green);
+}
+
+#photos-gallery button img{
+    width: 40px;
+}
+
 
 /* Register Anamnese */
 
