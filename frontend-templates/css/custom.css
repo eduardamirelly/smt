@@ -223,6 +223,10 @@
 
 /* Register Anamnese */
 
+#anamnese form #checks{
+    margin: 0px 2px;
+}
+
 #anamnese form .form-check .form-check-input{
   font-size: 20px;
 }
