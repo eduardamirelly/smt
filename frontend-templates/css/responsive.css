@@ -89,7 +89,7 @@
         margin-bottom: 50px;
     }
     #dashboard-body #toggle{
-        position: absolute;
+        position: fixed;
         left: 85%;
     }
 
