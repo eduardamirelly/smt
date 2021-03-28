@@ -30,5 +30,6 @@ ul{
     font-weight: 600;
     color: var(--dark-gray);
     font-size: calc(1.4rem + .9vw);;
+    margin-bottom: 50px;
 }
 
