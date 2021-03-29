@@ -205,18 +205,18 @@
 
 /* Dashboard Photo Gallery */
 
-#photos-gallery button{
+#title button{
     padding: 5px 10px;
     background-color: var(--light-green);
     border: none;
     border-radius: 5px;
 }
 
-#photos-gallery button:hover{
+#title button:hover{
     background-color: var(--medium-green);
 }
 
-#photos-gallery button img{
+#title button img{
     width: 40px;
 }
 
