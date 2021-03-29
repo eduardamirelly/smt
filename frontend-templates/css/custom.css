@@ -220,6 +220,10 @@
     width: 40px;
 }
 
+#title{
+    background-color: aquamarine;
+}
+
 
 /* Register Anamnese */
 
@@ -268,3 +272,6 @@
 
 /* Entry */
 
+
+
+/* Dashboard Anamnese List */
