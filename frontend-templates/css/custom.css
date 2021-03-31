@@ -233,26 +233,25 @@
 }
 
 
-
-/* Register Anamnese */
+/* Dashboard Register Anamnese */
 
 #anamnese form #checks{
     margin: 0px 2px;
 }
 
 #anamnese form .form-check .form-check-input{
-  font-size: 20px;
+    font-size: 20px;
 }
 
 #anamnese form .form-check .form-check-input:checked,
 #anamnese form .form-check .form-check-input:active{
     background-color: var(--light-green);
-    border: 1px solid var(--medium-green);
+    border: 1px solid var(--light-green);
 }
 
 #anamnese form .form-check .form-check-label{
-  font-size: 15px;
-  padding: 4px;
+    font-size: 0.9rem;
+    padding: 4px;
 }
 
 #anamnese form .form-label{
@@ -266,13 +265,29 @@
 #anamnese form .form-check .form-check-input:focus,
 #anamnese form textarea:focus{
     box-shadow: none;
-    border: 1px solid var(--medium-green);
+    border: 1px solid var(--light-green);
 }
 
 #anamnese form textarea{
     font-weight: 400;
     font-size: 0.8rem;
 }
+
+
+/* Dashboard Show Anamnese */
+
+#anamnese form .form-check .form-check-input:disabled{
+    opacity: 1;
+}
+
+#anamnese form .form-check .form-check-input:disabled:not(#anamnese form .form-check .form-check-input:checked){
+    background-color: rgba(245,245,245, 0.5);
+}
+
+#anamnese form textarea:disabled{
+    background-color: var(--gray-white);
+}
+
 
 /* Dashboard Data Student */
 
@@ -284,3 +299,4 @@
 
 
 /* Dashboard Anamnese List */
+
