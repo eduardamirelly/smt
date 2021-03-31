@@ -81,8 +81,12 @@
 
 /* Dashboard Body */
 
+#dashboard-body{
+    padding: 0px 5vw 0px 5vw;
+}
+
 #dashboard-body #up-title{
-    margin: 40px 5vw 20px 5vw;
+    margin: 40px 0vw 20px 0vw;
 }
 
 #dashboard-body #title h2{
@@ -205,6 +209,14 @@
 
 /* Dashboard Photo Gallery */
 
+#title{
+    margin-top: 20px;
+}
+
+#title h2{
+    margin-bottom: 0px;
+}
+
 #title button{
     padding: 5px 10px;
     background-color: var(--light-green);
@@ -220,9 +232,6 @@
     width: 30px;
 }
 
-#title{
-    margin: 20px 5vw 0px 5vw;
-}
 
 
 /* Register Anamnese */
