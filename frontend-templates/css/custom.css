@@ -81,8 +81,12 @@
 
 /* Dashboard Body */
 
+#dashboard-body{
+    padding: 0px 5vw 0px 5vw;
+}
+
 #dashboard-body #up-title{
-    margin: 40px 5vw 20px 5vw;
+    margin: 40px 0vw 20px 0vw;
 }
 
 #dashboard-body #title h2{
@@ -205,20 +209,29 @@
 
 /* Dashboard Photo Gallery */
 
-#photos-gallery button{
+#title{
+    margin-top: 20px;
+}
+
+#title h2{
+    margin-bottom: 0px;
+}
+
+#title button{
     padding: 5px 10px;
     background-color: var(--light-green);
     border: none;
     border-radius: 5px;
 }
 
-#photos-gallery button:hover{
+#title button:hover{
     background-color: var(--medium-green);
 }
 
-#photos-gallery button img{
-    width: 40px;
+#title button img{
+    width: 30px;
 }
+
 
 
 /* Register Anamnese */
@@ -268,3 +281,6 @@
 
 /* Entry */
 
+
+
+/* Dashboard Anamnese List */
