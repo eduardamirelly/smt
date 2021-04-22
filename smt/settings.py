@@ -82,6 +82,10 @@ DATABASES = {
     }
 }
 
+AUTHENTICATION_BACKENDS = (
+    'suap_backend.backends.SuapOAuth2',
+    'django.contrib.auth.backends.ModelBackend',
+)
 
 # Password validation
 # https://docs.djangoproject.com/en/3.1/ref/settings/#auth-password-validators
@@ -123,3 +127,8 @@ STATIC_URL = '/static/'
 
 MEDIA_ROOT = BASE_DIR / 'core/media'
 MEDIA_URL = 'core/media/'
+
+LOGIN_REDIRECT_URL = '/accounts/profile/'
+
+SOCIAL_AUTH_SUAP_KEY = 'IzPV5XtHDJXBG5TRNa7OLVIFqOC0AYSw86vMyJ5S'
+SOCIAL_AUTH_SUAP_SECRET = 'ydP2fmEDFt8VU5vTWAoCSeWNcNk0QshazsftwFW5QJ3nKlboYn9BDc2zbnToJBkKNqUqXIQspfcXi49tfuMSy1UxR8zx4XeDef6o3x32iiwWUS1FMjbEoSkhAWdjxbaJ'

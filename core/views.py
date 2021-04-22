@@ -10,6 +10,23 @@ import os, base64, datetime, io
 
 # Create your views here.
 
+
+from django.conf import settings
+from django.contrib.auth.decorators import login_required
+from django.http import HttpResponseRedirect
+
+
+def index(request):
+    if request.user.is_authenticated:
+        return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+    return render(request, 'index.html', {})
+
+
+def profile(request):
+    if not request.user.is_authenticated:
+        return HttpResponseRedirect('/')
+    return render(request, 'profile.html', {})
+
 def listStudents(request):
     students = Student.objects.all()
     phones_students = PhonesStudent.objects.all()
