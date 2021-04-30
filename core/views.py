@@ -7,25 +7,43 @@ from .models import Entry, Student, PhonesStudent, Anamnese, ImageFaceStudent
 from .import_file import excel_read, save_data
 import pandas as pd
 import os, base64, datetime, io
-
-# Create your views here.
-
-
 from django.conf import settings
 from django.contrib.auth.decorators import login_required
+from django.contrib.auth.models import User
 from django.http import HttpResponseRedirect
 
+# Create your views here.
 
 def index(request):
     if request.user.is_authenticated:
         return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
-    return render(request, 'index.html', {})
+    return render(request, 'index.html')
 
 
 def profile(request):
     if not request.user.is_authenticated:
         return HttpResponseRedirect('/')
-    return render(request, 'profile.html', {})
+    
+    print(request)
+
+    return render(request, 'profile.html')
+
+
+# def loginMatriculationStudent(request):
+#     if request.method == 'POST':
+#         form = MatriculationStudent(request.POST)
+#         if form.is_valid():
+#             # if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
+#             #     student = Student.objects.get(matriculation=request.POST['matriculation'])
+#             #     return redirect('data-student', student=student.matriculation)
+            
+#             if request.user.is_authenticated:
+#                 return HttpResponseRedirect(settings.LOGIN_REDIRECT_URL)
+
+#     else:
+#         form = MatriculationStudent()
+
+#     return render(request, 'loginMatriculation.html', {'form': form})
 
 def listStudents(request):
     students = Student.objects.all()
@@ -50,19 +68,6 @@ def importFile(request):
         form = DataExcelForm()
 
     return render(request, 'importStudents.html', {'form': form})
-
-
-def loginMatriculationStudent(request):
-    if request.method == 'POST':
-        form = MatriculationStudent(request.POST)
-        if form.is_valid():
-            if Student.objects.filter(matriculation=request.POST['matriculation']).exists():
-                student = Student.objects.get(matriculation=request.POST['matriculation'])
-                return redirect('data-student', student=student.matriculation)
-    else:
-        form = MatriculationStudent()
-
-    return render(request, 'loginMatriculation.html', {'form': form})
 
 
 def dataStudent(request, student):
