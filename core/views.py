@@ -5,8 +5,10 @@ from django.http import HttpResponse
 from .forms import DataExcelForm, MatriculationStudent, AnamneseForm, ImageStudentForm
 from .models import Entry, Student, PhonesStudent, Anamnese, ImageFaceStudent
 from .import_file import excel_read, save_data
+from .serializers import *
 import pandas as pd
 import os, base64, datetime, io
+from rest_framework import generics
 
 # Create your views here.
 
@@ -157,7 +159,6 @@ def deleteAnamnese(request, student, pk):
     anamnese.delete()
     return redirect('list-anamneses', student=student)
 
-
 #função que recebe um json
 def enterCampi(request):
     #aqui para gerar o objeto entrada e salvar
@@ -170,3 +171,24 @@ def enterCampi(request):
         return HttpResponse("Xuxu beleza.")
     else:
         return HttpResponse('Matrícula inválida.')
+
+#Api ↓
+class StudentList(generics.ListCreateAPIView):
+    queryset = Student.objects.all()
+    serializer_class = StudentSerializer
+    
+class PhonesStudentList(generics.ListCreateAPIView):
+    queryset = PhonesStudent.objects.all()
+    serializer_class = PhonesStudentSerializer
+
+class ImageFaceStudentList(generics.ListCreateAPIView):
+    queryset = ImageFaceStudent.objects.all()
+    serializer_class = ImageFaceStudentSerializer
+
+class AnamneseList(generics.ListCreateAPIView):
+    queryset = Anamnese.objects.all()
+    serializer_class = AnamneseSerializer
+
+class EntryList(generics.ListCreateAPIView):
+    queryset = Entry.objects.all()
+    serializer_class = EntrySerializer
