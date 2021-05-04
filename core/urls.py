@@ -16,6 +16,11 @@ urlpatterns = [
     path('student/<str:student>/anamnese/register/', views.registerAnamneseStudent, name='register-anamnese'),
     path('student/<str:student>/anamnese/delete/<int:pk>/', views.deleteAnamnese, name='delete-anamnese'),
     path('entry/', views.enterCampi, name='enter-campi'),
+    path('api/studentlist/', views.StudentList.as_view(), name='student-list'),
+    path('api/phoneslist/', views.PhonesStudentList.as_view(), name='phones-list'),
+    path('api/facestudentlist/', views.ImageFaceStudentList.as_view(), name='image_face-list'),
+    path('api/anamneselist/', views.AnamneseList.as_view(), name='anamnese-list'),
+    path('api/entrylist/', views.EntryList.as_view(), name='entry-list'),
 ]
 
 
